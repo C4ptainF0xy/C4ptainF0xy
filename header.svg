@@ -1,0 +1,53 @@
+<svg fill="none" viewBox="0 0 1200 400" width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .header-container {
+          width: 1200px;
+          height: 400px;
+          background-image: url('https://i.imgur.com/FuX0za3.gif');
+          background-size: cover;
+          background-position: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+        }
+        .header-overlay {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+        }
+        .header-content {
+          position: relative;
+          z-index: 2;
+          text-align: center;
+        }
+        .header-title {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-size: 45px;
+          font-weight: bold;
+          color: white;
+          margin: 0;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .header-subtitle {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          font-size: 18px;
+          color: white;
+          margin-top: 10px;
+          text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+      </style>
+      <div class="header-container">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+          <h1 class="header-title">Sasha DA SILVA</h1>
+          <p class="header-subtitle">@C4ptainF0xy | Full-Stack Developer &amp; Game Server Engineer</p>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>
