@@ -1,7 +1,8 @@
 <!-- Header Animation -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,16,17,11&height=200&section=header&text=Sasha%20DA%20SILVA&fontSize=45&fontAlignY=35&desc=@C4ptainF0xy%20|%20Full-Stack%20Developer%20&%20Game%20Server%20Engineer&descSize=18&descAlignY=55&animation=twinkling" />
+  <img src="header.svg" alt="Header" />
 </div>
+
 
 <!-- Typing Animation -->
 <div align="center">
@@ -74,7 +75,7 @@
       <td align="center" width="50%">
         <h3>🤖 Pixela Bot</h3>
         <a href="https://pixela.prismodev.fr">
-          <img src="https://img.shields.io/badge/Visit-Pixela-4285F4?style=for-the-badge&logo=node&logoColor=white" />
+          <img src="https://img.shields.io/badge/Visit-Pixela-4285F4?style=for-the-badge&logo=node.js&logoColor=white" />
         </a>
         <br><br>
         <i>Advanced Discord bot with AI integration</i>
