@@ -74,7 +74,7 @@
       <td align="center" width="50%">
         <h3>🤖 Pixela Bot</h3>
         <a href="https://pixela.prismodev.fr">
-          <img src="https://img.shields.io/badge/Visit-Pixela-4285F4?style=for-the-badge&logo=discord&logoColor=white" />
+          <img src="https://img.shields.io/badge/Visit-Pixela-4285F4?style=for-the-badge&logo=node&logoColor=white" />
         </a>
         <br><br>
         <i>Advanced Discord bot with AI integration</i>
@@ -82,7 +82,7 @@
       <td align="center" width="50%">
         <h3>🏢 Prismodev</h3>
         <a href="https://prismodev.fr">
-          <img src="https://img.shields.io/badge/Visit-Prismodev-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+          <img src="https://img.shields.io/badge/Visit-Prismodev-000000?style=for-the-badge&logo=react&logoColor=white" />
         </a>
         <br><br>
         <i>Professional web development & game hosting services</i>
@@ -91,7 +91,7 @@
     <tr>
       <td align="center" colspan="2">
         <h3>🎮 QT Extended Mod</h3>
-        <img src="https://img.shields.io/badge/Friday_Night_Funkin'-FF6B6B?style=for-the-badge&logo=game&logoColor=white" />
+        <img src="https://img.shields.io/badge/Friday_Night_Funkin'-FF6B6B?style=for-the-badge&logo=apple%20music&logoColor=white" />
         <br><br>
         <i>Currently developing an extended mod for FNF</i>
       </td>
@@ -121,33 +121,6 @@
     style C fill:#ef4444,stroke:#7f1d1d,stroke-width:2px,color:#fff
   ```
   
-</div>
-
-<br>
-
-<!-- GitHub Stats with Animation -->
-<h2 align="center">
-  📊 GitHub Analytics
-</h2>
-
-<div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=C4ptainF0xy&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0D1117"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=C4ptainF0xy&layout=compact&langs_count=8&theme=tokyonight&hide_border=true&bg_color=0D1117"/>
-</div>
-
-<div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=C4ptainF0xy&theme=tokyonight&hide_border=true&background=0D1117" alt="GitHub Streak" />
-</div>
-
-<br>
-
-<!-- Activity Graph -->
-<h2 align="center">
-  📈 Contribution Graph
-</h2>
-
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=C4ptainF0xy&theme=tokyo-night&hide_border=true&bg_color=0D1117&color=58A6FF&line=58A6FF&point=58A6FF" />
 </div>
 
 <br>
@@ -185,15 +158,6 @@
 <!-- Profile Views Counter -->
 <div align="center">
   <img src="https://komarev.com/ghpvc/?username=C4ptainF0xy&style=for-the-badge&color=58A6FF" alt="Profile Views" />
-</div>
-
-<!-- Snake Animation -->
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/C4ptainF0xy/C4ptainF0xy/blob/output/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/C4ptainF0xy/C4ptainF0xy/blob/output/github-contribution-grid-snake.svg" />
-    <img alt="github-snake" src="https://github.com/C4ptainF0xy/C4ptainF0xy/blob/output/github-contribution-grid-snake.svg" />
-  </picture>
 </div>
 
 <!-- Footer Wave -->
