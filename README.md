@@ -72,17 +72,6 @@ My web development and game server management company — where creativity meets
 ### 🎵 QT Extended
 Currently working on a major Friday Night Funkin' mod, bringing new content to the rhythm game community.
 
----
-
-## 📊 GitHub Stats
-
-<div align="center">
-  
-  ![Sasha's GitHub stats](https://github-readme-stats.vercel.app/api?username=C4ptainF0xy&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117&title_color=F85D7F&icon_color=F8D866)
-  
-  ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=C4ptainF0xy&layout=compact&theme=radical&hide_border=true&bg_color=0D1117&title_color=F85D7F)
-  
-</div>
 
 ---
 
@@ -93,16 +82,6 @@ Currently working on a major Friday Night Funkin' mod, bringing new content to t
 - 🎯 **Future Goals** — Deep diving into AI/ML & Cybersecurity
 
 ---
-
-<div align="center">
-  
-  ### 💭 *"Code is like music: it's all about rhythm and pattern recognition"*
-  
-  ![Visitor Count](https://profile-counter.glitch.me/C4ptainF0xy/count.svg)
-  
-  **Thanks for stopping by! Feel free to reach out** 🚀
-  
-</div>
 
 <script>
 document.getElementById('years').textContent = new Date().getFullYear() - 2011;
