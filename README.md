@@ -1,8 +1,12 @@
 <!-- Header Animation -->
 <div align="center">
-  <img src="header.svg" alt="Header" />
+  <img src="https://i.imgur.com/FuX0za3.gif" alt="Sasha DA SILVA - @C4ptainF0xy" width="100%" />
 </div>
 
+<div align="center">
+  <h1>Sasha DA SILVA</h1>
+  <p><b>@C4ptainF0xy | Full-Stack Developer & Game Server Engineer</b></p>
+</div>
 
 <!-- Typing Animation -->
 <div align="center">
