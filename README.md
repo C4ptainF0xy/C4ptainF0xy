@@ -97,6 +97,7 @@
     <tr>
       <td align="center" colspan="2">
         <h3>🎮 QT Extended Mod</h3>
+        <a href="https://qtextended.prismodev.com">
         <img src="https://img.shields.io/badge/Friday_Night_Funkin'-FF6B6B?style=for-the-badge&logo=apple%20music&logoColor=white" />
         <br><br>
         <i>Currently developing an extended mod for FNF</i>
