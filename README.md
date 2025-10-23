@@ -16,41 +16,39 @@
   
 </div>
 
-<!-- About Me Section with Readable Format -->
+<!-- About Me Section -->
 <div align="center">
   <br>
   
-```json
-{
-  "developer": {
-    "name": "Sasha DA SILVA",
-    "alias": "C4ptainF0xy",
-    "roles": [
-      "Full-Stack Developer",
-      "Game Server Engineer",
-      "Business Owner"
-    ],
-    "company": "Prismodev",
-    "education": {
-      "institution": "CODA Orléans",
-      "program": "Computer Science",
-      "year": "1/5"
-    },
-    "experience": {
-      "drumming": "15 years 🥁",
-      "webDevelopment": "3 years",
-      "nextGoal": "Cybersecurity (2 years planned)"
-    },
-    "passions": [
-      "NotITG",
-      "Friday Night Funkin'",
-      "Cybersecurity",
-      "AI & Deep Learning"
-    ]
-  }
-}
-```
-
+  <table>
+    <tr>
+      <td align="center" width="33%">
+        <h3>👨‍💻 Developer</h3>
+        <p><strong>Sasha DA SILVA</strong><br>
+        <i>@C4ptainF0xy</i><br><br>
+        🚀 Full-Stack Developer<br>
+        🎮 Game Server Engineer<br>
+        💼 Business Owner</p>
+      </td>
+      <td align="center" width="33%">
+        <h3>🎓 Journey</h3>
+        <p><strong>CODA Orléans</strong><br>
+        Computer Science (1/5)<br><br>
+        🥁 15 years drumming<br>
+        💻 3 years web dev<br>
+        🔒 Next: Cybersecurity</p>
+      </td>
+      <td align="center" width="33%">
+        <h3>💖 Passions</h3>
+        <p><strong>Prismodev</strong><br>
+        Company Founder<br><br>
+        🎵 NotITG<br>
+        🎤 Friday Night Funkin'<br>
+        🤖 AI & Deep Learning</p>
+      </td>
+    </tr>
+  </table>
+  
 </div>
 
 <br>
@@ -128,18 +126,6 @@ Featured Projects
     </td>
   </tr>
 </table>
-</div>
-
-<br>
-
-<!-- GitHub Stats -->
-<h2 align="center">
-📊 GitHub Statistics
-</h2>
-
-<div align="center">
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=C4ptainF0xy&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=C4ptainF0xy&layout=compact&langs_count=8&theme=tokyonight"/>
 </div>
 
 <br>
