@@ -1,7 +1,6 @@
 <!-- Header with GIF Background -->
 <div align="center">
   <div style="position: relative; width: 100%; height: 200px; overflow: hidden; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-    <img src="https://i.imgur.com/FuX0za3.gif" style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.4;" />
     <div style="position: relative; z-index: 1; padding-top: 50px;">
       <h1 style="color: white; font-size: 45px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Sasha DA SILVA</h1>
       <p style="color: white; font-size: 18px; margin-top: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">@C4ptainF0xy | Full-Stack Developer & Game Server Engineer</p>
