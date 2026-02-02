@@ -1,8 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
-# fait moi un fichier markdown
-
-```md
 <!-- Header -->
 <div align="center">
   <h1>Sasha DA SILVA (@C4ptainF0xy)</h1>
@@ -107,11 +102,3 @@ D --> F[Bots, automation, assistants]
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/C4ptainF0xy)
 
 </div>
-```
-<span style="display:none">[^1][^2]</span>
-
-<div align="center">⁂</div>
-
-[^1]: CV_DASILVA_SASHA_B1-B.2pdf.pdf
-[^2]: Blanc-violet-moderne-CV-francais-document-A4-1.pdf```
-
