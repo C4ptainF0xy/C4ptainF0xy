@@ -1,18 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 110" width="1280" height="110">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 160" width="1280" height="160">
   <style>
     @font-face { font-family: "JetBrains Mono"; font-weight: 600; src: url({{font:jetbrains-mono-600.woff2}}) format("woff2"); }
-    .name { font-family: "Space Grotesk", sans-serif; font-weight: 700; }
     .mono { font-family: "JetBrains Mono", monospace; font-weight: 600; }
-    .label { font-family: "Noto Sans", sans-serif; font-weight: 600; }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
     .cursor { animation: blink 1s steps(1) infinite; }
     @keyframes blink { 50% { opacity: 0; } }
+    /* pops up, looks around for a while, ducks back down */
+    .peek { animation: peek 6s cubic-bezier(.3, 1.4, .5, 1) infinite; }
+    @keyframes peek { 0%, 8% { transform: translateY(120px); } 18%, 78% { transform: translateY(0); } 88%, 100% { transform: translateY(120px); } }
+    .tilt { transform-box: fill-box; transform-origin: 50% 100%; animation: tilt 6s ease-in-out infinite; }
+    @keyframes tilt { 0%, 30% { transform: rotate(0); } 42%, 55% { transform: rotate(-6deg); } 66%, 100% { transform: rotate(0); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
-  <defs><clipPath id="card"><rect width="1280" height="110" rx="14"/></clipPath></defs>
+  <defs>
+    <clipPath id="card"><rect width="1280" height="160" rx="16"/></clipPath>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f17"/><stop offset="1" stop-color="#160a24"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="100%" r="60%"><stop offset="0" stop-color="#a855f7" stop-opacity=".4"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/></radialGradient>
+  </defs>
   <g clip-path="url(#card)">
-    <rect width="1280" height="110" fill="#0b0f17"/>
-    <text class="mono" x="624" y="70" font-size="48" fill="#8b949e" text-anchor="middle"><tspan fill="#a855f7">&gt;</tspan> Nothing personal, kid.</text>
-    <rect class="cursor" x="972" y="34" width="24" height="44" rx="3" fill="#ec4899"/>
+    <rect width="1280" height="160" fill="url(#sky)"/>
+    <ellipse cx="1080" cy="170" rx="260" ry="120" fill="url(#glow)"/>
+    <text class="mono" x="56" y="96" font-size="48" fill="#8b949e"><tspan fill="#a855f7">&gt;</tspan> Nothing personal, kid.</text>
+    <rect class="cursor" x="752" y="60" width="24" height="44" rx="3" fill="#ec4899"/>
+    <g class="peek"><g class="tilt">
+      <image href="{{img:sona-head.png@420}}" x="980" y="18" width="210" height="210"/>
+    </g></g>
   </g>
-  <rect x=".5" y=".5" width="1279" height="109" rx="14" fill="none" stroke="#30363d"/>
+  <rect x=".5" y=".5" width="1279" height="159" rx="16" fill="none" stroke="#30363d"/>
 </svg>

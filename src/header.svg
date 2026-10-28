@@ -1,78 +1,136 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 580" width="1280" height="580">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 560" width="1280" height="560">
   <style>
-    @font-face { font-family: "Noto Sans"; font-weight: 400; src: url({{font:noto-sans-400.woff2}}) format("woff2"); }
     @font-face { font-family: "Space Grotesk"; font-weight: 700; src: url({{font:space-grotesk-700.woff2}}) format("woff2"); }
     @font-face { font-family: "JetBrains Mono"; font-weight: 600; src: url({{font:jetbrains-mono-600.woff2}}) format("woff2"); }
     .name { font-family: "Space Grotesk", sans-serif; font-weight: 700; }
-    .mono { font-family: "JetBrains Mono", monospace; font-weight: 600; }
-    .body { font-family: "Noto Sans", sans-serif; }
-    /* entrance plays once when the image loads, then only the idle loops keep moving */
-    .rise { animation: rise .7s cubic-bezier(.2, .8, .2, 1) both; }
-    .d1 { animation-delay: .1s; } .d2 { animation-delay: .25s; } .d3 { animation-delay: .35s; }
-    .d4 { animation-delay: .45s; } .d5 { animation-delay: .55s; } .d6 { animation-delay: .65s; }
-    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .mono, .role { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 50px; }
+    .rise { animation: rise .8s cubic-bezier(.2, .8, .2, 1) both; }
+    .d1 { animation-delay: .12s; } .d2 { animation-delay: .3s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+    .aurora { animation: drift 12s ease-in-out infinite; }
+    .aurora.b { animation-delay: -6s; }
+    @keyframes drift { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(90px, 40px) scale(1.12); } }
+    .stars circle { fill: #f5e9ff; animation: twinkle 3s ease-in-out infinite; }
+    @keyframes twinkle { 0%, 100% { opacity: .12; } 50% { opacity: .9; } }
+    .halo { transform-box: fill-box; transform-origin: center; animation: halo 4s ease-in-out infinite; }
+    @keyframes halo { 0%, 100% { transform: scale(1); opacity: .85; } 50% { transform: scale(1.07); opacity: 1; } }
+    .float { animation: float 4s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    .shadow { transform-box: fill-box; transform-origin: center; animation: shadow 4s ease-in-out infinite; }
+    @keyframes shadow { 0%, 100% { transform: scale(1); opacity: .7; } 50% { transform: scale(.82); opacity: .45; } }
+    .spark { transform-box: view-box; transform-origin: 1192px 238px; animation: spark 2s ease-in-out infinite; }
+    @keyframes spark { 0%, 100% { transform: scale(1) rotate(0); filter: brightness(1); } 50% { transform: scale(1.14) rotate(8deg); filter: brightness(1.25); } }
+    .glint { transform-box: fill-box; transform-origin: center; animation: glint 2s ease-in-out infinite; }
+    @keyframes glint { 0%, 100% { transform: scale(0); opacity: 0; } 40% { transform: scale(1) rotate(45deg); opacity: 1; } 70% { transform: scale(0) rotate(90deg); opacity: 0; } }
+    .sweep { animation: sweep 4s cubic-bezier(.4, 0, .2, 1) infinite; }
+    @keyframes sweep { 0% { transform: translateX(0); } 35%, 100% { transform: translateX(1100px); } }
     .cursor { animation: blink 1s steps(1) infinite; }
     @keyframes blink { 50% { opacity: 0; } }
-    .sweep { animation: sweep 3s cubic-bezier(.4, 0, .2, 1) infinite; }
-    @keyframes sweep { 0% { transform: translateX(0); } 40%, 100% { transform: translateX(900px); } }
-    .glow { animation: breathe 6s ease-in-out infinite; }
-    .glow.late { animation-delay: -3s; }
-    @keyframes breathe { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
-    /* a drummer's nod: 120 BPM, one bar per sixteenth */
+    .role { opacity: 0; animation: role 12s cubic-bezier(.2, .8, .2, 1) infinite; }
+    .role.first { opacity: 1; }
+    @keyframes role { 0% { opacity: 0; transform: translateY(46px); } 4%, 23% { opacity: 1; transform: none; } 27%, 100% { opacity: 0; transform: translateY(-46px); } }
     .eq rect { transform-box: fill-box; transform-origin: bottom; animation: hit .5s ease-out infinite; }
-    @keyframes hit { 0% { transform: scaleY(1); } 12% { transform: scaleY(.25); } 100% { transform: scaleY(1); } }
+    @keyframes hit { 0% { transform: scaleY(1); } 12% { transform: scaleY(.3); } 100% { transform: scaleY(1); } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
   <defs>
-    <clipPath id="card"><rect width="1280" height="580" rx="16"/></clipPath>
-    <clipPath id="bar"><rect x="56" y="186" width="718" height="8" rx="4"/></clipPath>
+    <clipPath id="card"><rect width="1280" height="560" rx="18"/></clipPath>
+    <clipPath id="roles"><rect x="40" y="318" width="860" height="76"/></clipPath>
+    <clipPath id="nameclip"><text class="name" x="56" y="282" font-size="104" letter-spacing="-2">Sasha Da Silva</text></clipPath>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0f17"/><stop offset="1" stop-color="#160a24"/></linearGradient>
     <linearGradient id="brand" x1="0" x2="1"><stop offset="0" stop-color="#a855f7"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
-    <linearGradient id="ink" gradientUnits="userSpaceOnUse" x1="56" x2="1224"><stop offset="0" stop-color="#c084fc"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
-    <linearGradient id="gleam" x1="0" x2="1">
-      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
-    </linearGradient>
-    <radialGradient id="purple"><stop offset="0" stop-color="#a855f7" stop-opacity=".32"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/></radialGradient>
-    <radialGradient id="pink"><stop offset="0" stop-color="#ec4899" stop-opacity=".24"/><stop offset="1" stop-color="#ec4899" stop-opacity="0"/></radialGradient>
+    <linearGradient id="ink" gradientUnits="userSpaceOnUse" x1="120" x2="760"><stop offset="0" stop-color="#d8b4fe"/><stop offset="1" stop-color="#f9a8d4"/></linearGradient>
+    <linearGradient id="nameink" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9d5ff"/></linearGradient>
+    <linearGradient id="gleam" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#f9a8d4" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <radialGradient id="purple"><stop offset="0" stop-color="#a855f7" stop-opacity=".45"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/></radialGradient>
+    <radialGradient id="pink"><stop offset="0" stop-color="#ec4899" stop-opacity=".35"/><stop offset="1" stop-color="#ec4899" stop-opacity="0"/></radialGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#c084fc" stop-opacity=".55"/><stop offset=".55" stop-color="#ec4899" stop-opacity=".18"/><stop offset="1" stop-color="#ec4899" stop-opacity="0"/></radialGradient>
+    <radialGradient id="ground"><stop offset="0" stop-color="#000" stop-opacity=".75"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
   </defs>
   <g clip-path="url(#card)">
-    <rect width="1280" height="580" fill="#0b0f17"/>
-    <ellipse class="glow" cx="120" cy="40" rx="560" ry="300" fill="url(#purple)"/>
-    <ellipse class="glow late" cx="1220" cy="560" rx="620" ry="320" fill="url(#pink)"/>
-
-    <g class="eq" fill="url(#brand)">
-      <rect x="1068" y="40" width="9" height="44" rx="3" style="animation-delay:0s"/>
-      <rect x="1081" y="52" width="9" height="32" rx="3" style="animation-delay:-.125s"/>
-      <rect x="1094" y="34" width="9" height="50" rx="3" style="animation-delay:-.25s"/>
-      <rect x="1107" y="58" width="9" height="26" rx="3" style="animation-delay:-.375s"/>
-      <rect x="1120" y="44" width="9" height="40" rx="3" style="animation-delay:0s"/>
-      <rect x="1133" y="62" width="9" height="22" rx="3" style="animation-delay:-.125s"/>
-      <rect x="1146" y="38" width="9" height="46" rx="3" style="animation-delay:-.25s"/>
-      <rect x="1159" y="54" width="9" height="30" rx="3" style="animation-delay:-.375s"/>
-      <rect x="1172" y="42" width="9" height="42" rx="3" style="animation-delay:0s"/>
-      <rect x="1185" y="60" width="9" height="24" rx="3" style="animation-delay:-.125s"/>
-      <rect x="1198" y="48" width="9" height="36" rx="3" style="animation-delay:-.25s"/>
-      <rect x="1211" y="56" width="9" height="28" rx="3" style="animation-delay:-.375s"/>
+    <rect width="1280" height="560" fill="url(#sky)"/>
+    <ellipse class="aurora" cx="220" cy="80" rx="520" ry="260" fill="url(#purple)"/>
+    <ellipse class="aurora b" cx="980" cy="470" rx="560" ry="280" fill="url(#pink)"/>
+    <g class="stars">
+      <circle cx="828" cy="65" r="1.4" style="animation-duration:2s;animation-delay:-0.73s"/>
+      <circle cx="138" cy="535" r="1.4" style="animation-duration:3s;animation-delay:-0.26s"/>
+      <circle cx="613" cy="445" r="1.4" style="animation-duration:3s;animation-delay:-1.71s"/>
+      <circle cx="441" cy="524" r="2.4" style="animation-duration:6s;animation-delay:-2.79s"/>
+      <circle cx="723" cy="475" r="1.4" style="animation-duration:4s;animation-delay:-0.47s"/>
+      <circle cx="572" cy="501" r="1.4" style="animation-duration:2s;animation-delay:-1.46s"/>
+      <circle cx="654" cy="472" r="3" style="animation-duration:4s;animation-delay:-3.55s"/>
+      <circle cx="730" cy="39" r="2.4" style="animation-duration:6s;animation-delay:-1.01s"/>
+      <circle cx="259" cy="521" r="1.8" style="animation-duration:2s;animation-delay:-1.54s"/>
+      <circle cx="834" cy="416" r="1.4" style="animation-duration:6s;animation-delay:-1.00s"/>
+      <circle cx="300" cy="456" r="3" style="animation-duration:4s;animation-delay:-3.95s"/>
+      <circle cx="44" cy="512" r="2.4" style="animation-duration:3s;animation-delay:-0.85s"/>
+      <circle cx="318" cy="445" r="2.4" style="animation-duration:4s;animation-delay:-3.81s"/>
+      <circle cx="835" cy="424" r="1.4" style="animation-duration:6s;animation-delay:-2.89s"/>
+      <circle cx="447" cy="467" r="1.4" style="animation-duration:3s;animation-delay:-1.02s"/>
+      <circle cx="20" cy="170" r="2.4" style="animation-duration:2s;animation-delay:-1.23s"/>
+      <circle cx="1253" cy="388" r="1.4" style="animation-duration:6s;animation-delay:-0.69s"/>
+      <circle cx="320" cy="43" r="1.4" style="animation-duration:4s;animation-delay:-2.78s"/>
+      <circle cx="476" cy="530" r="1.8" style="animation-duration:4s;animation-delay:-2.45s"/>
+      <circle cx="429" cy="520" r="1.4" style="animation-duration:4s;animation-delay:-3.96s"/>
+      <circle cx="592" cy="499" r="1.8" style="animation-duration:4s;animation-delay:-2.77s"/>
+      <circle cx="725" cy="473" r="2.4" style="animation-duration:4s;animation-delay:-0.32s"/>
+      <circle cx="1008" cy="17" r="2.4" style="animation-duration:6s;animation-delay:-4.80s"/>
+      <circle cx="197" cy="421" r="3" style="animation-duration:6s;animation-delay:-4.46s"/>
+      <circle cx="319" cy="501" r="1.8" style="animation-duration:4s;animation-delay:-2.19s"/>
+      <circle cx="288" cy="37" r="1.4" style="animation-duration:2s;animation-delay:-1.05s"/>
+      <circle cx="305" cy="460" r="1.8" style="animation-duration:3s;animation-delay:-0.08s"/>
+      <circle cx="551" cy="445" r="1.4" style="animation-duration:3s;animation-delay:-2.73s"/>
+      <circle cx="744" cy="485" r="1.8" style="animation-duration:6s;animation-delay:-3.19s"/>
+      <circle cx="58" cy="466" r="1.4" style="animation-duration:3s;animation-delay:-2.33s"/>
+      <circle cx="309" cy="500" r="1.4" style="animation-duration:2s;animation-delay:-0.65s"/>
+      <circle cx="587" cy="59" r="3" style="animation-duration:2s;animation-delay:-1.12s"/>
+      <circle cx="149" cy="469" r="1.8" style="animation-duration:4s;animation-delay:-2.77s"/>
+      <circle cx="823" cy="468" r="1.4" style="animation-duration:4s;animation-delay:-2.68s"/>
     </g>
+
+    <circle class="halo" cx="1080" cy="290" r="300" fill="url(#halo)"/>
+    <ellipse class="shadow" cx="1076" cy="548" rx="120" ry="16" fill="url(#ground)"/>
+    <g class="rise d1"><g class="float">
+      <image href="{{img:sona-base.png@620}}" x="930" y="10" width="297" height="540"/>
+      <image class="spark" href="{{img:sona-sparkle.png@620}}" x="930" y="10" width="297" height="540"/>
+      <path class="glint" d="M1240 170l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill="#fde68a" style="animation-delay:-.6s"/>
+      <path class="glint" d="M1162 196l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#fef3c7" style="animation-delay:-1.4s"/>
+      <path class="glint" d="M1252 262l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#fde68a" style="animation-delay:-.2s"/>
+    </g></g>
 
     <g class="rise">
-      <text class="name" x="56" y="156" font-size="104" fill="#f0f6fc" letter-spacing="-2">Sasha Da Silva</text>
+      <rect x="56" y="96" width="470" height="64" rx="32" fill="#a855f7" fill-opacity=".14" stroke="#a855f7" stroke-opacity=".55" stroke-width="2"/>
+      <text class="mono" x="84" y="143" fill="#e9d5ff" font-size="48">@C4ptainF0xy</text>
+      <rect class="cursor" x="450" y="108" width="24" height="42" rx="3" fill="#ec4899"/>
     </g>
     <g class="rise d1">
-      <text class="mono" x="1188" y="154" font-size="48" fill="#c084fc" text-anchor="end">@C4ptainF0xy</text>
-      <rect class="cursor" x="1196" y="116" width="26" height="44" rx="3" fill="#ec4899"/>
+      <text class="name" x="56" y="282" font-size="104" letter-spacing="-2" fill="url(#nameink)">Sasha Da Silva</text>
+      <g clip-path="url(#nameclip)"><g class="sweep"><rect x="-260" y="170" width="200" height="140" fill="url(#gleam)" transform="skewX(-18)"/></g></g>
     </g>
-    <g class="rise d2">
-      <rect x="56" y="186" width="718" height="8" rx="4" fill="url(#brand)"/>
-      <g clip-path="url(#bar)"><g class="sweep"><rect x="-150" y="186" width="120" height="8" fill="url(#gleam)"/></g></g>
+    <g class="rise d2" clip-path="url(#roles)">
+      <text class="role first" x="56" y="372" style="animation-delay:-12s"><tspan fill="#a855f7">&gt; </tspan><tspan fill="url(#ink)">full-stack dev</tspan></text>
+      <text class="role" x="56" y="372" style="animation-delay:-9s"><tspan fill="#a855f7">&gt; </tspan><tspan fill="url(#ink)">game server engineer</tspan></text>
+      <text class="role" x="56" y="372" style="animation-delay:-6s"><tspan fill="#a855f7">&gt; </tspan><tspan fill="url(#ink)">drummer for 15 years</tspan></text>
+      <text class="role" x="56" y="372" style="animation-delay:-3s"><tspan fill="#a855f7">&gt; </tspan><tspan fill="url(#ink)">rhythm game modder</tspan></text>
     </g>
-
-    <g class="body" font-size="48" fill="#c9d1d9">
-      <text class="rise d2" x="56" y="270">Full-stack dev, student at CODA Orléans. I care</text>
-      <text class="rise d3" x="56" y="334">about the boring half of software as much as the</text>
-      <text class="rise d4" x="56" y="398">fun one: <tspan fill="url(#ink)">signed updates, self-hosted backends,</tspan></text>
-      <text class="rise d5" x="56" y="462"><tspan fill="url(#ink)">tests that actually fail</tspan> when something breaks.</text>
-      <text class="rise d6" x="56" y="526">Lately mostly Go, Electron, Haxe and Svelte.</text>
+    <g class="eq rise d2" fill="url(#brand)" opacity=".9">
+      <rect x="56" y="472" width="9" height="28" rx="3" style="animation-delay:-0s"/>
+      <rect x="70" y="456" width="9" height="44" rx="3" style="animation-delay:-0.125s"/>
+      <rect x="84" y="480" width="9" height="20" rx="3" style="animation-delay:-0.25s"/>
+      <rect x="98" y="464" width="9" height="36" rx="3" style="animation-delay:-0.375s"/>
+      <rect x="112" y="448" width="9" height="52" rx="3" style="animation-delay:-0s"/>
+      <rect x="126" y="476" width="9" height="24" rx="3" style="animation-delay:-0.125s"/>
+      <rect x="140" y="460" width="9" height="40" rx="3" style="animation-delay:-0.25s"/>
+      <rect x="154" y="470" width="9" height="30" rx="3" style="animation-delay:-0.375s"/>
+      <rect x="168" y="452" width="9" height="48" rx="3" style="animation-delay:-0s"/>
+      <rect x="182" y="478" width="9" height="22" rx="3" style="animation-delay:-0.125s"/>
+      <rect x="196" y="466" width="9" height="34" rx="3" style="animation-delay:-0.25s"/>
+      <rect x="210" y="454" width="9" height="46" rx="3" style="animation-delay:-0.375s"/>
+      <rect x="224" y="474" width="9" height="26" rx="3" style="animation-delay:-0s"/>
+      <rect x="238" y="462" width="9" height="38" rx="3" style="animation-delay:-0.125s"/>
+      <rect x="252" y="482" width="9" height="18" rx="3" style="animation-delay:-0.25s"/>
+      <rect x="266" y="458" width="9" height="42" rx="3" style="animation-delay:-0.375s"/>
     </g>
   </g>
-  <rect x=".5" y=".5" width="1279" height="579" rx="16" fill="none" stroke="#30363d"/>
+  <rect x=".5" y=".5" width="1279" height="559" rx="18" fill="none" stroke="#30363d"/>
 </svg>
