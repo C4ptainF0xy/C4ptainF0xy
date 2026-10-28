@@ -22,6 +22,13 @@ def test_embed_replaces_img_token_with_resized_webp():
         assert im.size == (8, 4)
 
 
+def test_embed_inlines_svg_markup_without_xml_declaration():
+    with tempfile.TemporaryDirectory() as d:
+        (Path(d) / "logo.svg").write_text('<?xml version="1.0"?>\n<svg viewBox="0 0 1 1"><g id="Up-arrow"/></svg>\n')
+        out = build.embed("<g>{{inline:logo.svg}}</g>", img_dir=Path(d))
+        assert out == '<g><svg viewBox="0 0 1 1"><g id="Up-arrow"/></svg></g>', out
+
+
 def test_check_flags_script_and_external_href():
     with tempfile.TemporaryDirectory() as d:
         (Path(d) / "bad.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg"><script/><image href="https://x/y.png"/></svg>')

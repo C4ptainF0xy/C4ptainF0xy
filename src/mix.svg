@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400">
+  <style>
+    @font-face { font-family: "Noto Sans"; font-weight: 600; src: url({{font:noto-sans-600.woff2}}) format("woff2"); }
+    text { font-family: "Noto Sans", sans-serif; }
+    /* 120 BPM: one beat every 0.5 s, the arrows hit left, up, right on beats 2 to 4 of a 2 s bar */
+    .bop, .btn, .hit, #Cyan-top, #Pink-top, #Pink-bottom, #Cyan-bottom { transform-box: fill-box; transform-origin: center; }
+    .bop { animation: bop .5s ease-out infinite; }
+    .btn { animation: press .5s ease-out infinite; }
+    .hit-left { animation: hit-left 2s ease-out infinite; }
+    .hit-up { animation: hit-up 2s ease-out infinite; }
+    .hit-right { animation: hit-right 2s ease-out infinite; }
+    #Cyan-top, #Pink-bottom { animation: twinkle 1s ease-in-out infinite; }
+    #Pink-top, #Cyan-bottom { animation: twinkle 1s ease-in-out .5s infinite; }
+    @keyframes bop { 0% { transform: scale(1); } 6% { transform: scale(1.045); } 50%, 100% { transform: scale(1); } }
+    @keyframes press { 0% { transform: scale(1); } 6% { transform: scale(1.03); } 50%, 100% { transform: scale(1); } }
+    @keyframes hit-left { 0%, 25% { transform: none; filter: none; } 26.5% { transform: translate(-44px, 0); filter: brightness(1.35); } 40%, 100% { transform: none; filter: none; } }
+    @keyframes hit-up { 0%, 50% { transform: none; filter: none; } 51.5% { transform: translate(0, -44px); filter: brightness(1.35); } 65%, 100% { transform: none; filter: none; } }
+    @keyframes hit-right { 0%, 75% { transform: none; filter: none; } 76.5% { transform: translate(44px, 0); filter: brightness(1.35); } 90%, 100% { transform: none; filter: none; } }
+    @keyframes twinkle { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: .6; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs><clipPath id="card"><rect width="1280" height="400" rx="16"/></clipPath></defs>
+  <g clip-path="url(#card)">
+    <image href="{{img:mix-spray.png@1600}}" x="-277" y="0" width="1600" height="400"/>
+
+    <g transform="translate(387 10) scale(.35)">
+      <g class="bop">{{inline:mix-logo.svg}}</g>
+    </g>
+
+    <g class="btn">
+      <rect x="852" y="296" width="400" height="84" rx="18" fill="#100921"/>
+      <rect x="844" y="288" width="400" height="84" rx="18" fill="#5865F2" stroke="#100921" stroke-width="8"/>
+      <text x="1044" y="345" font-size="44" font-weight="600" fill="#fff" text-anchor="middle">Join the Discord</text>
+    </g>
+  </g>
+</svg>

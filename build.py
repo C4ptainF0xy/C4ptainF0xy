@@ -4,6 +4,7 @@ GitHub shows SVGs through <img>, which loads nothing external, so images and fon
   {{img:name.png@640}}  -> WebP, downscaled to 640 px wide
   {{svg:name.svg}}      -> the SVG file as is
   {{font:name.woff2}}   -> the font file as is
+  {{inline:name.svg}}   -> the SVG markup itself, so the card's CSS can animate its groups
 Run: py build.py
 """
 import base64
@@ -17,7 +18,7 @@ ROOT = Path(__file__).parent
 SRC, OUT = ROOT / "src", ROOT / "assets"
 IMG = SRC / "img"
 FONTS = SRC / "fonts"
-TOKEN = re.compile(r"\{\{(img|svg|font):([^@}]+)(?:@(\d+))?\}\}")
+TOKEN = re.compile(r"\{\{(img|svg|font|inline):([^@}]+)(?:@(\d+))?\}\}")
 MIME = {"svg": "image/svg+xml", "font": "font/woff2"}
 
 
@@ -26,6 +27,8 @@ def _b64(data: bytes) -> str:
 
 
 def data_uri(kind: str, name: str, width: int | None, img_dir: Path, font_dir: Path) -> str:
+    if kind == "inline":
+        return re.sub(r"<\?xml[^>]*\?>\s*", "", (img_dir / name).read_text("utf-8")).strip()
     if kind != "img":
         path = (font_dir if kind == "font" else img_dir) / name
         return f"data:{MIME[kind]};base64,{_b64(path.read_bytes())}"
