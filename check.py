@@ -5,6 +5,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 MAX_FILE, MAX_TOTAL = 1_500_000, 5_000_000
+# On a phone the README column is 278 CSS px (360 viewport minus GitHub's margins and padding);
+# the Also buttons take 32 % of it. Text drawn smaller than this is unreadable there.
+PHONE_COLUMN, MIN_TEXT_PX = 278, 10
 EXTERNAL = re.compile(r"""(?:\bhref|xlink:href)\s*=\s*["']https?:|url\(\s*["']?https?:|@import""", re.I)
 
 
@@ -19,6 +22,11 @@ def violations(assets: Path) -> list[str]:
             found.append(f"{f.name}: contains <script>")
         if m := EXTERNAL.search(text):
             found.append(f"{f.name}: external resource {m[0]!r}")
+        if vb := re.search(r'viewBox="0 0 ([\d.]+)', text):
+            scale = PHONE_COLUMN * (0.32 if f.name.startswith("also-") else 1) / float(vb[1])
+            for size in sorted({float(s) for s in re.findall(r'<text[^>]*font-size="([\d.]+)"', text)}):
+                if size * scale < MIN_TEXT_PX:
+                    found.append(f"{f.name}: font-size {size:g} is {size * scale:.1f}px on a phone (< {MIN_TEXT_PX})")
     if total > MAX_TOTAL:
         found.append(f"assets total {total:,} bytes > {MAX_TOTAL:,}")
     return found

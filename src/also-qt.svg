@@ -5,12 +5,12 @@
   </style>
   <defs>
     <clipPath id="c"><rect width="400" height="160" rx="12"/></clipPath>
-    <clipPath id="v"><rect x="214" width="186" height="160"/></clipPath>
+    <clipPath id="v"><rect x="244" width="156" height="160"/></clipPath>
   </defs>
   <g clip-path="url(#c)">
     <rect width="400" height="160" fill="#1d1b26"/>
-    <g clip-path="url(#v)"><rect x="214" width="186" height="160" fill="#2a2433"/><image href="{{img:qt-logo.png@280}}" x="232" y="5" width="150" height="150"/></g>
-    <text x="20" y="72" font-size="40" fill="#f0f1f7">QT</text>
-    <text x="20" y="116" font-size="40" fill="#f0f1f7">Extended</text>
+    <g clip-path="url(#v)"><rect x="244" width="156" height="160" fill="#2a2433"/><image href="{{img:qt-logo.png@280}}" x="252" y="12" width="140" height="140"/></g>
+    <text x="18" y="70" font-size="46" fill="#f0f1f7">QT</text>
+    <text x="18" y="118" font-size="46" fill="#f0f1f7">Extended</text>
   </g>
 </svg>

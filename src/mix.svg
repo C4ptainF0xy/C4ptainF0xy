@@ -2,6 +2,7 @@
   <style>
     @font-face { font-family: "Noto Sans"; font-weight: 600; src: url({{font:noto-sans-600.woff2}}) format("woff2"); }
     text { font-family: "Noto Sans", sans-serif; }
+    svg svg { overflow: visible; } /* the arrow tips leave the logo's own frame when they hit */
     /* 120 BPM: one beat every 0.5 s, the arrows hit left, up, right on beats 2 to 4 of a 2 s bar */
     .bop, .btn, .hit, #Cyan-top, #Pink-top, #Pink-bottom, #Cyan-bottom { transform-box: fill-box; transform-origin: center; }
     .bop { animation: bop .5s ease-out infinite; }
@@ -28,9 +29,9 @@
     </g>
 
     <g class="btn">
-      <rect x="852" y="296" width="400" height="84" rx="18" fill="#100921"/>
-      <rect x="844" y="288" width="400" height="84" rx="18" fill="#5865F2" stroke="#100921" stroke-width="8"/>
-      <text x="1044" y="345" font-size="44" font-weight="600" fill="#fff" text-anchor="middle">Join the Discord</text>
+      <rect x="824" y="296" width="440" height="84" rx="18" fill="#100921"/>
+      <rect x="816" y="288" width="440" height="84" rx="18" fill="#5865F2" stroke="#100921" stroke-width="8"/>
+      <text x="1036" y="346" font-size="47" font-weight="600" fill="#fff" text-anchor="middle">Join the Discord</text>
     </g>
   </g>
 </svg>
