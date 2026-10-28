@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160">
+  <style>
+    @font-face { font-family: "Noto Sans"; font-weight: 600; src: url({{font:noto-sans-600.woff2}}) format("woff2"); }
+    text { font-family: "Noto Sans", sans-serif; font-weight: 600; }
+  </style>
+  <defs>
+    <clipPath id="c"><rect width="400" height="160" rx="12"/></clipPath>
+    <clipPath id="v"><rect x="214" width="186" height="160"/></clipPath>
+  </defs>
+  <g clip-path="url(#c)">
+    <rect width="400" height="160" fill="#1d1b26"/>
+    <g clip-path="url(#v)"><rect x="214" width="186" height="160" fill="#2a2433"/><image href="{{img:qt-logo.png@280}}" x="232" y="5" width="150" height="150"/></g>
+    <text x="20" y="72" font-size="40" fill="#f0f1f7">QT</text>
+    <text x="20" y="116" font-size="40" fill="#f0f1f7">Extended</text>
+  </g>
+</svg>

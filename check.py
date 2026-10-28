@@ -24,8 +24,20 @@ def violations(assets: Path) -> list[str]:
     return found
 
 
+def readme_violations(readme: str, assets: Path) -> list[str]:
+    found = []
+    for src in re.findall(r'<img[^>]*\bsrc="([^"]+)"', readme):
+        if not src.startswith("https://") and not (assets / Path(src.split("?")[0]).name).exists():
+            found.append(f"README: missing asset {src}")
+    found += [f"README: non-https link {h}" for h in re.findall(r'href="([^"]+)"', readme) + re.findall(r"\]\(([^)]+)\)", readme)
+              if not h.startswith("https://")]
+    found += ["README: style attribute is stripped by GitHub" for _ in re.findall(r"<[^>]*\bstyle=", readme)]
+    found += [f"README: image without alt {tag[:60]}" for tag in re.findall(r"<img\b[^>]*>", readme) if " alt=" not in tag]
+    return found
+
+
 if __name__ == "__main__":
     assets = ROOT / "assets"
-    found = violations(assets)
+    found = violations(assets) + readme_violations((ROOT / "README.md").read_text("utf-8"), assets)
     print("\n".join(found) or f"OK {len(list(assets.glob('*.svg')))} files, total {sum(f.stat().st_size for f in assets.glob('*.svg')):,} bytes")
     sys.exit(1 if found else 0)

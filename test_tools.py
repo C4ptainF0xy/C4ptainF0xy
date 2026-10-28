@@ -44,6 +44,22 @@ def test_check_flags_oversize_file():
         assert any("big.svg" in v and "bytes" in v for v in check.violations(Path(d)))
 
 
+def test_readme_check_flags_missing_asset_http_link_and_style():
+    with tempfile.TemporaryDirectory() as d:
+        (Path(d) / "echo.svg").write_text("<svg/>")
+        readme = ('<a href="https://ok.example"><img src="assets/echo.svg?v=1" alt="a"></a>\n'
+                  '<img src="assets/gone.svg?v=1" alt="b">\n'
+                  '<a href="http://plain.example">x</a>\n'
+                  '<img src="assets/echo.svg" style="width:1px" alt="c">\n'
+                  '<img src="assets/echo.svg">\n')
+        found = check.readme_violations(readme, Path(d))
+        assert any("gone.svg" in v for v in found), found
+        assert any("http://plain.example" in v for v in found), found
+        assert any("style" in v for v in found), found
+        assert any("alt" in v for v in found), found
+        assert len(found) == 4, found
+
+
 def test_differs_measures_changed_pixel_ratio():
     a = Image.new("RGB", (10, 10), "black")
     b = a.copy()
