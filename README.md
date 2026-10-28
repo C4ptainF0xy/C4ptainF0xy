@@ -13,7 +13,7 @@ Dev full-stack, étudiant à CODA Orléans. Je fais autant attention à la parti
 - **MiX Engine** : un moteur Friday Night Funkin' qui fait tourner les mods Psych, V-Slice et Codename, avec le jeu en ligne.
 - **Krovara** : une plateforme de chat pour bandes d'amis et petites équipes, auto-hébergeable.
 
-Aussi : Pixela, un bot Discord · Idiots in Space, un jeu coop en développement (Godot) · QT Extended, un mod Friday Night Funkin'.
+Aussi : **Pixela**, un bot Discord : modération, tickets, cartes de bienvenue, auto-modération et chat IA.
 
 </details>
 
@@ -33,9 +33,9 @@ A chat platform for friend groups and small teams, self-hostable. `Go` `Svelte` 
 
 ## Also
 
-<a href="https://pixela.prismodev.com"><img src="assets/also-pixela.svg?v=1" width="32%" alt="Pixela, a Discord bot"></a> <img src="assets/also-idiots.svg?v=1" width="32%" alt="Idiots in Space, a co-op game in development (Godot)"> <a href="https://qtextended.prismodev.com"><img src="assets/also-qt.svg?v=1" width="32%" alt="QT Extended, a Friday Night Funkin' mod"></a>
+<a href="https://pixela.prismodev.com"><img src="assets/pixela.svg?v=1" width="100%" alt="Pixela, a Discord bot, cycling through its moderation commands, tickets, welcome cards and auto-moderation. Meet Pixela."></a>
 
-[Pixela](https://pixela.prismodev.com), a Discord bot · Idiots in Space, a co-op game in development (Godot) · [QT Extended](https://qtextended.prismodev.com), a Friday Night Funkin' mod
+A Discord bot: moderation, tickets, welcome cards, auto-moderation and AI chat. `Node.js` `Discord.js`
 
 ## Stack
 
