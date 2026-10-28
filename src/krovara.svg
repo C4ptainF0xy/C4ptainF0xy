@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400">
+  <style>
+    @font-face { font-family: "Inter"; font-weight: 100 900; src: url({{font:inter-latin-var.woff2}}) format("woff2"); }
+    text { font-family: "Inter", sans-serif; }
+    .float { animation: float 6s ease-in-out infinite; }
+    .shine { animation: shine 6s cubic-bezier(.4, 0, .2, 1) infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes shine { 0% { transform: translateX(0); } 18%, 100% { transform: translateX(760px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <clipPath id="card"><rect width="1280" height="400" rx="16"/></clipPath>
+    <clipPath id="shot"><rect x="500" y="64" width="760" height="441" rx="14"/></clipPath>
+    <clipPath id="btn"><rect x="56" y="258" width="360" height="88" rx="12"/></clipPath>
+    <filter id="lift" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#32283e" flood-opacity=".18"/>
+    </filter>
+    <radialGradient id="glow" cx="72%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#eeebf4"/>
+      <stop offset="1" stop-color="#f7f6f2"/>
+    </radialGradient>
+    <linearGradient id="gleam" x1="0" x2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#fff" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="1280" height="400" fill="url(#glow)"/>
+
+    <g class="float">
+      <rect x="500" y="64" width="760" height="441" rx="14" fill="#fffefa" filter="url(#lift)"/>
+      <image href="{{img:krovara-lieux.png@1520}}" x="500" y="64" width="760" height="441" clip-path="url(#shot)"/>
+      <rect x="500.5" y="64.5" width="759" height="440" rx="14" fill="none" stroke="#e6e2e8"/>
+    </g>
+
+    <!-- the K is Krovara's own mark: three bars, as RebootApp.svelte draws it, scaled x3 -->
+    <g transform="translate(56 92)" fill="#32283e">
+      <rect x="3" y="0" width="15" height="72" rx="6"/>
+      <rect x="36" y="0" width="15" height="48" rx="6" transform="rotate(45 43.5 24)"/>
+      <rect x="36" y="24" width="15" height="48" rx="6" transform="rotate(-45 43.5 48)"/>
+    </g>
+    <text x="140" y="156" font-size="72" font-weight="700" letter-spacing="-3.6" fill="#282534">Krovara<tspan fill="#6654a5">.</tspan></text>
+    <text x="58" y="222" font-size="44" font-weight="500" letter-spacing="-1" fill="#4a4554">Connect instantly.</text>
+
+    <rect x="56" y="258" width="360" height="88" rx="12" fill="#6654a5"/>
+    <text x="96" y="317" font-size="44" font-weight="600" letter-spacing="-.5" fill="#fff">Try Krovara</text>
+    <path d="M362 284l18 18-18 18" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <g clip-path="url(#btn)">
+      <g class="shine"><rect x="-140" y="250" width="90" height="110" fill="url(#gleam)" transform="skewX(-20)"/></g>
+    </g>
+  </g>
+  <rect x=".5" y=".5" width="1279" height="399" rx="16" fill="none" stroke="#e6e2e8"/>
+</svg>
