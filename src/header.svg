@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 580" width="1280" height="580">
+  <style>
+    @font-face { font-family: "Noto Sans"; font-weight: 400; src: url({{font:noto-sans-400.woff2}}) format("woff2"); }
+    @font-face { font-family: "Space Grotesk"; font-weight: 700; src: url({{font:space-grotesk-700.woff2}}) format("woff2"); }
+    @font-face { font-family: "JetBrains Mono"; font-weight: 600; src: url({{font:jetbrains-mono-600.woff2}}) format("woff2"); }
+    .name { font-family: "Space Grotesk", sans-serif; font-weight: 700; }
+    .mono { font-family: "JetBrains Mono", monospace; font-weight: 600; }
+    .body { font-family: "Noto Sans", sans-serif; }
+    /* entrance plays once when the image loads, then only the idle loops keep moving */
+    .rise { animation: rise .7s cubic-bezier(.2, .8, .2, 1) both; }
+    .d1 { animation-delay: .1s; } .d2 { animation-delay: .25s; } .d3 { animation-delay: .35s; }
+    .d4 { animation-delay: .45s; } .d5 { animation-delay: .55s; } .d6 { animation-delay: .65s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .cursor { animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .sweep { animation: sweep 3s cubic-bezier(.4, 0, .2, 1) infinite; }
+    @keyframes sweep { 0% { transform: translateX(0); } 40%, 100% { transform: translateX(900px); } }
+    .glow { animation: breathe 6s ease-in-out infinite; }
+    .glow.late { animation-delay: -3s; }
+    @keyframes breathe { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+    /* a drummer's nod: 120 BPM, one bar per sixteenth */
+    .eq rect { transform-box: fill-box; transform-origin: bottom; animation: hit .5s ease-out infinite; }
+    @keyframes hit { 0% { transform: scaleY(1); } 12% { transform: scaleY(.25); } 100% { transform: scaleY(1); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <clipPath id="card"><rect width="1280" height="580" rx="16"/></clipPath>
+    <clipPath id="bar"><rect x="56" y="186" width="718" height="8" rx="4"/></clipPath>
+    <linearGradient id="brand" x1="0" x2="1"><stop offset="0" stop-color="#a855f7"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+    <linearGradient id="ink" gradientUnits="userSpaceOnUse" x1="56" x2="1224"><stop offset="0" stop-color="#c084fc"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
+    <linearGradient id="gleam" x1="0" x2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="purple"><stop offset="0" stop-color="#a855f7" stop-opacity=".32"/><stop offset="1" stop-color="#a855f7" stop-opacity="0"/></radialGradient>
+    <radialGradient id="pink"><stop offset="0" stop-color="#ec4899" stop-opacity=".24"/><stop offset="1" stop-color="#ec4899" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="1280" height="580" fill="#0b0f17"/>
+    <ellipse class="glow" cx="120" cy="40" rx="560" ry="300" fill="url(#purple)"/>
+    <ellipse class="glow late" cx="1220" cy="560" rx="620" ry="320" fill="url(#pink)"/>
+
+    <g class="eq" fill="url(#brand)">
+      <rect x="1068" y="40" width="9" height="44" rx="3" style="animation-delay:0s"/>
+      <rect x="1081" y="52" width="9" height="32" rx="3" style="animation-delay:-.125s"/>
+      <rect x="1094" y="34" width="9" height="50" rx="3" style="animation-delay:-.25s"/>
+      <rect x="1107" y="58" width="9" height="26" rx="3" style="animation-delay:-.375s"/>
+      <rect x="1120" y="44" width="9" height="40" rx="3" style="animation-delay:0s"/>
+      <rect x="1133" y="62" width="9" height="22" rx="3" style="animation-delay:-.125s"/>
+      <rect x="1146" y="38" width="9" height="46" rx="3" style="animation-delay:-.25s"/>
+      <rect x="1159" y="54" width="9" height="30" rx="3" style="animation-delay:-.375s"/>
+      <rect x="1172" y="42" width="9" height="42" rx="3" style="animation-delay:0s"/>
+      <rect x="1185" y="60" width="9" height="24" rx="3" style="animation-delay:-.125s"/>
+      <rect x="1198" y="48" width="9" height="36" rx="3" style="animation-delay:-.25s"/>
+      <rect x="1211" y="56" width="9" height="28" rx="3" style="animation-delay:-.375s"/>
+    </g>
+
+    <g class="rise">
+      <text class="name" x="56" y="156" font-size="104" fill="#f0f6fc" letter-spacing="-2">Sasha Da Silva</text>
+    </g>
+    <g class="rise d1">
+      <text class="mono" x="1188" y="154" font-size="48" fill="#c084fc" text-anchor="end">@C4ptainF0xy</text>
+      <rect class="cursor" x="1196" y="116" width="26" height="44" rx="3" fill="#ec4899"/>
+    </g>
+    <g class="rise d2">
+      <rect x="56" y="186" width="718" height="8" rx="4" fill="url(#brand)"/>
+      <g clip-path="url(#bar)"><g class="sweep"><rect x="-150" y="186" width="120" height="8" fill="url(#gleam)"/></g></g>
+    </g>
+
+    <g class="body" font-size="48" fill="#c9d1d9">
+      <text class="rise d2" x="56" y="270">Full-stack dev, student at CODA Orléans. I care</text>
+      <text class="rise d3" x="56" y="334">about the boring half of software as much as the</text>
+      <text class="rise d4" x="56" y="398">fun one: <tspan fill="url(#ink)">signed updates, self-hosted backends,</tspan></text>
+      <text class="rise d5" x="56" y="462"><tspan fill="url(#ink)">tests that actually fail</tspan> when something breaks.</text>
+      <text class="rise d6" x="56" y="526">Lately mostly Go, Electron, Haxe and Svelte.</text>
+    </g>
+  </g>
+  <rect x=".5" y=".5" width="1279" height="579" rx="16" fill="none" stroke="#30363d"/>
+</svg>

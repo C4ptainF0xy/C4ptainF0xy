@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 110" width="1280" height="110">
+  <style>
+    @font-face { font-family: "Space Grotesk"; font-weight: 700; src: url({{font:space-grotesk-700.woff2}}) format("woff2"); }
+    @font-face { font-family: "JetBrains Mono"; font-weight: 600; src: url({{font:jetbrains-mono-600.woff2}}) format("woff2"); }
+    .name { font-family: "Space Grotesk", sans-serif; font-weight: 700; }
+    .mono { font-family: "JetBrains Mono", monospace; font-weight: 600; }
+    .label { font-family: "Noto Sans", sans-serif; font-weight: 600; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    .pulse { animation: run 3s cubic-bezier(.5, 0, .5, 1) infinite; }
+    @keyframes run { 0% { transform: translateX(0); } 70%, 100% { transform: translateX(976px); } }
+  </style>
+  <defs>
+    <clipPath id="card"><rect width="1280" height="110" rx="14"/></clipPath>
+    <clipPath id="rail"><rect x="484" y="53" width="740" height="4" rx="2"/></clipPath>
+    <linearGradient id="brand" x1="0" x2="1"><stop offset="0" stop-color="#a855f7"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+    <linearGradient id="gleam" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="1280" height="110" fill="#0b0f17"/>
+    <text class="mono" x="56" y="72" font-size="48" fill="#a855f7">01</text>
+    <text class="name" x="150" y="76" font-size="64" fill="#f0f6fc" letter-spacing="-1">Featured</text>
+    <rect x="484" y="53" width="740" height="4" rx="2" fill="url(#brand)" opacity=".35"/>
+    <g clip-path="url(#rail)"><g class="pulse"><rect x="284" y="53" width="180" height="4" fill="url(#gleam)"/></g></g>
+  </g>
+  <rect x=".5" y=".5" width="1279" height="109" rx="14" fill="none" stroke="#30363d"/>
+</svg>

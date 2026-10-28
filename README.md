@@ -1,8 +1,4 @@
-# Sasha Da Silva
-
-`@C4ptainF0xy`
-
-Full-stack dev, student at CODA Orléans. I care about the boring half of software as much as the fun one: signed updates, self-hosted backends, tests that actually fail when something breaks. Lately mostly Go, Electron, Haxe and Svelte.
+<img src="assets/header.svg?v=1" width="100%" alt="Sasha Da Silva, @C4ptainF0xy. Full-stack dev, student at CODA Orléans. I care about the boring half of software as much as the fun one: signed updates, self-hosted backends, tests that actually fail when something breaks. Lately mostly Go, Electron, Haxe and Svelte.">
 
 <details lang="fr">
 <summary>Version française</summary>
@@ -17,7 +13,7 @@ Aussi : **Pixela**, un bot Discord : modération, tickets, cartes de bienvenue, 
 
 </details>
 
-## Featured
+<h3><img src="assets/title-featured.svg?v=1" width="100%" alt="Featured"></h3>
 
 <a href="https://echolauncher.com/#beta"><img src="assets/echo.svg?v=1" width="100%" alt="Echo Launcher. Your library. Your cloud. Your rules. Join the beta."></a>
 
@@ -31,18 +27,19 @@ A Friday Night Funkin' engine that plays Psych, V-Slice and Codename mods, with 
 
 A chat platform for friend groups and small teams, self-hostable. `Go` `Svelte` `PostgreSQL`
 
-## Also
+<h3><img src="assets/title-also.svg?v=1" width="100%" alt="Also"></h3>
 
 <a href="https://pixela.prismodev.com"><img src="assets/pixela.svg?v=1" width="100%" alt="Pixela, a Discord bot, cycling through its moderation commands, tickets, welcome cards and auto-moderation. Meet Pixela."></a>
 
 A Discord bot: moderation, tickets, welcome cards, auto-moderation and AI chat. `Node.js` `Discord.js`
 
-## Stack
+<h3><img src="assets/title-stack.svg?v=1" width="100%" alt="Stack"></h3>
 
-Go · TypeScript · Electron · Svelte · Haxe · Godot · Java · Docker · Linux
+<img src="assets/stack.svg?v=1" width="100%" alt="Go, TypeScript, Electron, Svelte, Haxe, Godot, Java, Docker, Linux">
 
-## Contact
+<h3><img src="assets/title-contact.svg?v=1" width="100%" alt="Contact"></h3>
 
-[LinkedIn](https://www.linkedin.com/in/sasha-dasilva) · [Discord](https://discordapp.com/users/1195101621143740509) · [Instagram](https://www.instagram.com/c4ptainfoxy/) · [Twitch](https://www.twitch.tv/c4ptainfoxy)
+<a href="https://www.linkedin.com/in/sasha-dasilva"><img src="assets/contact-linkedin.svg?v=1" width="49%" alt="LinkedIn"></a> <a href="https://discordapp.com/users/1195101621143740509"><img src="assets/contact-discord.svg?v=1" width="49%" alt="Discord"></a>
+<a href="https://www.instagram.com/c4ptainfoxy/"><img src="assets/contact-instagram.svg?v=1" width="49%" alt="Instagram"></a> <a href="https://www.twitch.tv/c4ptainfoxy"><img src="assets/contact-twitch.svg?v=1" width="49%" alt="Twitch"></a>
 
-<sub>Nothing personal, kid.</sub>
+<img src="assets/footer.svg?v=1" width="100%" alt="Nothing personal, kid.">

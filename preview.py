@@ -6,7 +6,9 @@
 more than 1 % of pixels changed means the animation visibly jumps when it loops.
 """
 import argparse
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 from PIL import Image, ImageChops
@@ -48,7 +50,18 @@ if __name__ == "__main__":
     ap.add_argument("--out", required=True)
     ap.add_argument("--bg", default="#0d1117")
     ap.add_argument("--loop-check", type=float)
+    ap.add_argument("--gif", type=float, metavar="PERIOD", help="also write <out>.gif: one loop at 20 fps (5/100 s per frame, exact in GIF)")
     a = ap.parse_args()
+    if a.gif:
+        with tempfile.TemporaryDirectory() as d:
+            frames = render(a.svg, [i / 20 for i in range(round(a.gif * 20))], a.width, f"{d}/f", a.bg)
+            for i, f in enumerate(frames):
+                f.rename(f"{d}/{i:04d}.png")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", "20", "-i", f"{d}/%04d.png", "-vf",
+                            "split[a][b];[a]palettegen=stats_mode=full[p];[b][p]paletteuse=dither=sierra2_4a",
+                            "-loop", "0", f"{a.out}.gif"], check=True)
+        print(f"{a.out}.gif")
+        sys.exit(0)
     times = [float(x) for x in a.t.split(",")]
     for path in render(a.svg, times, a.width, a.out, a.bg):
         print(path)

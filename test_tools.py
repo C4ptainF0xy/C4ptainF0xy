@@ -41,11 +41,13 @@ def test_check_flags_script_and_external_href():
 def test_check_flags_text_too_small_on_a_278px_phone_column():
     with tempfile.TemporaryDirectory() as d:
         (Path(d) / "card.svg").write_text('<svg viewBox="0 0 1280 400"><text font-size="44">x</text><text font-size="48">y</text></svg>')
-        (Path(d) / "also-x.svg").write_text('<svg viewBox="0 0 400 160"><text font-size="40">x</text></svg>')
+        # contact buttons sit two per line (49 % each): 40 units on a 620 viewBox is 8.8 px, 47 is 10.3 px
+        (Path(d) / "contact-x.svg").write_text('<svg viewBox="0 0 620 120"><text font-size="40">x</text><text font-size="47">y</text></svg>')
         found = check.violations(Path(d))
         assert any("card.svg" in v and "44" in v for v in found), found
         assert not any("card.svg" in v and "48" in v for v in found), found
-        assert any("also-x.svg" in v and "40" in v for v in found), found
+        assert any("contact-x.svg" in v and "font-size 40 " in v for v in found), found
+        assert not any("contact-x.svg" in v and "font-size 47 " in v for v in found), found
 
 
 def test_check_flags_oversize_file():

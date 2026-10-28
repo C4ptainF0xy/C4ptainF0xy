@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 120" width="620" height="120">
+  <style>
+    @font-face { font-family: "Space Grotesk"; font-weight: 700; src: url({{font:space-grotesk-700.woff2}}) format("woff2"); }
+    .name { font-family: "Space Grotesk", sans-serif; font-weight: 700; }
+    .mono { font-family: "JetBrains Mono", monospace; font-weight: 600; }
+    .label { font-family: "Noto Sans", sans-serif; font-weight: 600; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+    .shine { animation: shine 4s cubic-bezier(.4, 0, .2, 1) -3.1s infinite; }
+    @keyframes shine { 0% { transform: translateX(0); } 25%, 100% { transform: translateX(900px); } }
+  </style>
+  <defs>
+    <clipPath id="card"><rect width="620" height="120" rx="16"/></clipPath>
+    <linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset=".35" stop-color="#FA7E1E"/><stop offset=".6" stop-color="#D62976"/><stop offset=".85" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient>
+    <linearGradient id="gleam" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="620" height="120" fill="#9146FF"/>
+    <path transform="translate(40 28) scale(2.67)" d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" fill="#fff"/>
+    <text class="name" x="132" y="79" font-size="56" fill="#fff" letter-spacing="-.5">Twitch</text>
+    <path d="M556 44l16 16-16 16" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <g class="shine"><rect x="-260" y="-20" width="110" height="160" fill="url(#gleam)" opacity=".45" transform="skewX(-20)"/></g>
+  </g>
+</svg>

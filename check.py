@@ -6,8 +6,9 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 MAX_FILE, MAX_TOTAL = 1_500_000, 5_000_000
 # On a phone the README column is 278 CSS px (360 viewport minus GitHub's margins and padding);
-# the Also buttons take 32 % of it. Text drawn smaller than this is unreadable there.
+# contact buttons sit two per line, 49 % each. Text drawn smaller than this is unreadable there.
 PHONE_COLUMN, MIN_TEXT_PX = 278, 10
+SHARE = {"contact-": .49}
 EXTERNAL = re.compile(r"""(?:\bhref|xlink:href)\s*=\s*["']https?:|url\(\s*["']?https?:|@import""", re.I)
 
 
@@ -23,7 +24,8 @@ def violations(assets: Path) -> list[str]:
         if m := EXTERNAL.search(text):
             found.append(f"{f.name}: external resource {m[0]!r}")
         if vb := re.search(r'viewBox="0 0 ([\d.]+)', text):
-            scale = PHONE_COLUMN * (0.32 if f.name.startswith("also-") else 1) / float(vb[1])
+            share = next((s for prefix, s in SHARE.items() if f.name.startswith(prefix)), 1)
+            scale = PHONE_COLUMN * share / float(vb[1])
             for size in sorted({float(s) for s in re.findall(r'<text[^>]*font-size="([\d.]+)"', text)}):
                 if size * scale < MIN_TEXT_PX:
                     found.append(f"{f.name}: font-size {size:g} is {size * scale:.1f}px on a phone (< {MIN_TEXT_PX})")
