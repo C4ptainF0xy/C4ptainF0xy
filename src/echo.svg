@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400">
+  <style>
+    @font-face { font-family: "Noto Sans"; font-weight: 400; src: url({{font:noto-sans-400.woff2}}) format("woff2"); }
+    @font-face { font-family: "Noto Sans"; font-weight: 600; src: url({{font:noto-sans-600.woff2}}) format("woff2"); }
+    text { font-family: "Noto Sans", sans-serif; }
+    .shine { animation: shine 4s cubic-bezier(.4, 0, .2, 1) infinite; }
+    .line { animation: pulse 4s ease-in-out infinite; }
+    @keyframes shine { 0% { transform: translateX(0); } 25%, 100% { transform: translateX(780px); } }
+    @keyframes pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <clipPath id="card"><rect width="1280" height="400" rx="16"/></clipPath>
+    <clipPath id="btn"><rect x="56" y="240" width="410" height="96" rx="14"/></clipPath>
+    <linearGradient id="fade" x1="0" x2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".95"/>
+      <stop offset=".45" stop-color="#000" stop-opacity=".8"/>
+      <stop offset=".72" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gleam" x1="0" x2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#fff" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#card)">
+    <rect width="1280" height="400" fill="#000"/>
+    <image href="{{img:echo-band.png}}" x="80" y="6" width="1200" height="408"/>
+    <rect width="1280" height="400" fill="url(#fade)"/>
+
+    <image href="{{img:echo-logo-crop.png@280}}" x="52" y="34" width="105" height="100"/>
+    <text x="176" y="116" font-size="80" font-weight="600" fill="#f0f1f7">Echo Launcher</text>
+    <text x="58" y="198" font-size="44" fill="#c9cad1">Your library. Your cloud. Your rules.</text>
+
+    <rect x="56" y="240" width="410" height="96" rx="14" fill="#ea1b2d"/>
+    <text x="92" y="304" font-size="46" font-weight="600" fill="#fff">Join the beta</text>
+    <path d="M408 270l18 18-18 18" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <g clip-path="url(#btn)">
+      <g class="shine"><rect x="-140" y="230" width="90" height="120" fill="url(#gleam)" transform="skewX(-20)"/></g>
+    </g>
+
+    <rect class="line" y="394" width="1280" height="6" fill="#ea1b2d"/>
+  </g>
+</svg>
