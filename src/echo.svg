@@ -7,6 +7,9 @@
     .line { animation: pulse 4s ease-in-out infinite; }
     @keyframes shine { 0% { transform: translateX(0); } 25%, 100% { transform: translateX(780px); } }
     @keyframes pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+    /* the yandere glow: a light laid over the eyes she already has, twice per bar */
+    .eye { mix-blend-mode: screen; animation: stare 2s ease-in-out infinite; }
+    @keyframes stare { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
   <defs>
@@ -17,6 +20,7 @@
       <stop offset=".45" stop-color="#000" stop-opacity=".8"/>
       <stop offset=".72" stop-color="#000" stop-opacity="0"/>
     </linearGradient>
+    <radialGradient id="eye"><stop offset="0" stop-color="#ff3b4e" stop-opacity=".95"/><stop offset=".35" stop-color="#ff1f35" stop-opacity=".5"/><stop offset="1" stop-color="#ff1f35" stop-opacity="0"/></radialGradient>
     <linearGradient id="gleam" x1="0" x2="1">
       <stop offset="0" stop-color="#fff" stop-opacity="0"/>
       <stop offset=".5" stop-color="#fff" stop-opacity=".45"/>
@@ -27,6 +31,8 @@
     <rect width="1280" height="400" fill="#000"/>
     <image href="{{img:echo-band.png}}" x="80" y="6" width="1200" height="408"/>
     <rect width="1280" height="400" fill="url(#fade)"/>
+    <circle class="eye" cx="1075" cy="139" r="26" fill="url(#eye)"/>
+    <circle class="eye" cx="1122" cy="137" r="26" fill="url(#eye)"/>
 
     <image href="{{img:echo-logo-crop.png@280}}" x="52" y="34" width="105" height="100"/>
     <text x="176" y="116" font-size="80" font-weight="600" fill="#f0f1f7">Echo Launcher</text>

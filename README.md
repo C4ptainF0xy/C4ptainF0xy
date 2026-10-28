@@ -11,11 +11,11 @@ Full-stack dev, student at CODA Orléans. I care about the boring half of softwa
 
 <h3><img src="assets/title-featured.svg?v=1" width="100%" alt="Featured"></h3>
 
-<a href="https://echolauncher.com/#beta"><img src="assets/echo.svg?v=1" width="100%" alt="Echo Launcher, a game launcher with its own self-hostable cloud: saves, achievements, friends. Your library. Your cloud. Your rules. Join the beta."></a>
+<a href="https://echolauncher.com/#beta"><img src="assets/echo.svg?v=2" width="100%" alt="Echo Launcher, a game launcher with its own self-hostable cloud: saves, achievements, friends. Your library. Your cloud. Your rules. Join the beta."></a>
 
 <a href="https://discord.gg/mixengine"><img src="assets/mix.svg?v=1" width="100%" alt="MiX Engine, a Friday Night Funkin' engine that plays Psych, V-Slice and Codename mods with online multiplayer. Join the Discord."></a>
 
-<a href="https://krovara.com"><img src="assets/krovara.svg?v=1" width="100%" alt="Krovara, a self-hostable chat platform for friend groups and small teams. Connect instantly. Try Krovara."></a>
+<a href="https://krovara.com"><img src="assets/krovara.svg?v=2" width="100%" alt="Krovara, a self-hostable chat platform for friend groups and small teams. Connect instantly. Try Krovara."></a>
 
 <h3><img src="assets/title-also.svg?v=1" width="100%" alt="Also"></h3>
 

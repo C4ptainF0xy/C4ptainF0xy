@@ -6,6 +6,9 @@
     .shine { animation: shine 6s cubic-bezier(.4, 0, .2, 1) infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     @keyframes shine { 0% { transform: translateX(0); } 18%, 100% { transform: translateX(760px); } }
+    /* the K's two arms pinch toward the stem and spring back, once per loop */
+    .arm { transform-box: view-box; transform-origin: 22px 36px; animation: pinch 6s cubic-bezier(.3, 1.6, .5, 1) infinite; }
+    @keyframes pinch { 0% { transform: scale(1); } 4% { transform: scale(.72); } 12%, 100% { transform: scale(1); } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
   <defs>
@@ -37,8 +40,8 @@
     <!-- the K is Krovara's own mark: three bars, as RebootApp.svelte draws it, scaled x3 -->
     <g transform="translate(56 92)" fill="#32283e">
       <rect x="3" y="0" width="15" height="72" rx="6"/>
-      <rect x="36" y="0" width="15" height="48" rx="6" transform="rotate(45 43.5 24)"/>
-      <rect x="36" y="24" width="15" height="48" rx="6" transform="rotate(-45 43.5 48)"/>
+      <g class="arm"><rect x="36" y="0" width="15" height="48" rx="6" transform="rotate(45 43.5 24)"/></g>
+      <g class="arm"><rect x="36" y="24" width="15" height="48" rx="6" transform="rotate(-45 43.5 48)"/></g>
     </g>
     <text x="140" y="156" font-size="72" font-weight="700" letter-spacing="-3.6" fill="#282534">Krovara<tspan fill="#6654a5">.</tspan></text>
     <text x="58" y="222" font-size="47" font-weight="500" letter-spacing="-1" fill="#4a4554">Connect instantly.</text>
