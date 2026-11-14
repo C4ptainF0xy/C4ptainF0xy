@@ -14,6 +14,8 @@
     .head { transform-origin: 626px 560px; animation: tilt 4s ease-in-out infinite; }
     @keyframes tilt { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-2deg); } 70% { transform: rotate(1.4deg); } }
     .curl { transform-origin: 717px 440px; animation: sway 4s ease-in-out infinite; }
+    .curl-l { transform-box: view-box; transform-origin: 492px 440px; animation: sway-l 4s ease-in-out infinite; }
+    @keyframes sway-l { 0%, 100% { transform: rotate(0); } 55% { transform: rotate(-4deg); } }
     @keyframes sway { 0%, 100% { transform: rotate(0); } 45% { transform: rotate(5deg); } }
     .bun-l { transform-origin: 582px 187px; animation: bun-l 2s ease-in-out infinite; }
     .bun-r { transform-origin: 665px 192px; animation: bun-r 2s ease-in-out -.25s infinite; }
@@ -51,9 +53,11 @@
 
     <g transform="translate(837.3 -22.7) scale(0.44)">
       <g class="breathe">
-        <image href="{{img:echo-rig/part19.png@84}}" x="397" y="566" width="95" height="339"/><image href="{{img:echo-rig/part20.png@101}}" x="751" y="883" width="115" height="128"/><image href="{{img:echo-rig/part13.png@378}}" x="423" y="506" width="429" height="539"/><image href="{{img:echo-rig/part17.png@208}}" x="397" y="566" width="236" height="377"/><image href="{{img:echo-rig/part18.png@195}}" x="411" y="610" width="222" height="334"/><image href="{{img:echo-rig/part15.png@97}}" x="769" y="613" width="110" height="341"/><image href="{{img:echo-rig/part16.png@112}}" x="751" y="614" width="127" height="397"/>
+        <image href="{{img:echo-rig/part19.png@84}}" x="397" y="566" width="95" height="339"/><image href="{{img:echo-rig/part20.png@101}}" x="751" y="883" width="115" height="128"/>
+        <!-- both curls hang behind the coat, yet follow the head: same tilt, drawn before the torso -->
+        <g class="head"><g class="curl-l"><image href="{{img:echo-rig/part22.png@119}}" x="424" y="438" width="135" height="168"/></g><g class="curl"><image href="{{img:echo-rig/part12.png@150}}" x="632" y="435" width="171" height="191"/></g></g>
+        <image href="{{img:echo-rig/part13.png@378}}" x="423" y="506" width="429" height="539"/><image href="{{img:echo-rig/part17.png@208}}" x="397" y="566" width="236" height="377"/><image href="{{img:echo-rig/part18.png@195}}" x="411" y="610" width="222" height="334"/><image href="{{img:echo-rig/part15.png@97}}" x="769" y="613" width="110" height="341"/><image href="{{img:echo-rig/part16.png@112}}" x="751" y="614" width="127" height="397"/>
         <g class="head">
-          <g class="curl"><image href="{{img:echo-rig/part12.png@150}}" x="632" y="435" width="171" height="191"/></g>
           <image href="{{img:echo-rig/part03.png@267}}" x="475" y="214" width="303" height="354"/><image href="{{img:echo-rig/part10.png@83}}" x="642" y="347" width="94" height="46"/><image href="{{img:echo-rig/part11.png@76}}" x="521" y="353" width="86" height="50"/><g class="grin"><image href="{{img:echo-rig/part14.png@142}}" x="551" y="408" width="161" height="82"/></g>
           <circle class="eye" cx="689" cy="370" r="62" fill="url(#eye)"/>
           <circle class="eye" cx="564" cy="378" r="62" fill="url(#eye)"/>
