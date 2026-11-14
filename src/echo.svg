@@ -7,7 +7,24 @@
     .line { animation: pulse 4s ease-in-out infinite; }
     @keyframes shine { 0% { transform: translateX(0); } 25%, 100% { transform: translateX(780px); } }
     @keyframes pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
-    /* the yandere glow: a light laid over the eyes she already has, twice per bar */
+    /* Skely's cut-out Yandere, rigged: pivots are joints on the 1280 reference drawing */
+    .breathe, .head, .curl, .grin, .bun-l, .bun-r, .hand, .tap { transform-box: view-box; }
+    .breathe { transform-origin: 640px 1045px; animation: breathe 4s ease-in-out infinite; }
+    @keyframes breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.006, 1.014); } }
+    .head { transform-origin: 626px 560px; animation: tilt 4s ease-in-out infinite; }
+    @keyframes tilt { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-2deg); } 70% { transform: rotate(1.4deg); } }
+    .curl { transform-origin: 717px 440px; animation: sway 4s ease-in-out infinite; }
+    @keyframes sway { 0%, 100% { transform: rotate(0); } 45% { transform: rotate(5deg); } }
+    .bun-l { transform-origin: 582px 187px; animation: bun-l 2s ease-in-out infinite; }
+    .bun-r { transform-origin: 665px 192px; animation: bun-r 2s ease-in-out -.25s infinite; }
+    @keyframes bun-l { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-8deg); } }
+    @keyframes bun-r { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(8deg); } }
+    .grin { transform-origin: 632px 449px; animation: grin 4s ease-in-out infinite; }
+    @keyframes grin { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05, 1.03); } }
+    .hand { transform-origin: 600px 650px; animation: hand 2s ease-in-out infinite; }
+    @keyframes hand { 0%, 40%, 100% { transform: rotate(0); } 15% { transform: rotate(-2.5deg); } }
+    .tap { transform-origin: 561px 530px; animation: tap 2s ease-in-out infinite; }
+    @keyframes tap { 0%, 40%, 100% { transform: rotate(0); } 15% { transform: rotate(-6deg); } }
     .eye { mix-blend-mode: screen; animation: stare 2s ease-in-out infinite; }
     @keyframes stare { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
@@ -29,10 +46,25 @@
   </defs>
   <g clip-path="url(#card)">
     <rect width="1280" height="400" fill="#000"/>
-    <image href="{{img:echo-band.png}}" x="80" y="6" width="1200" height="408"/>
+    <image href="{{img:echo-crowd.png}}" x="80" y="6" width="1200" height="408"/>
     <rect width="1280" height="400" fill="url(#fade)"/>
-    <circle class="eye" cx="1075" cy="139" r="26" fill="url(#eye)"/>
-    <circle class="eye" cx="1122" cy="137" r="26" fill="url(#eye)"/>
+
+    <g transform="translate(837.3 -22.7) scale(0.44)">
+      <g class="breathe">
+        <image href="{{img:echo-rig/part19.png@84}}" x="397" y="566" width="95" height="339"/><image href="{{img:echo-rig/part20.png@101}}" x="751" y="883" width="115" height="128"/><image href="{{img:echo-rig/part13.png@378}}" x="423" y="506" width="429" height="539"/><image href="{{img:echo-rig/part17.png@208}}" x="397" y="566" width="236" height="377"/><image href="{{img:echo-rig/part18.png@195}}" x="411" y="610" width="222" height="334"/><image href="{{img:echo-rig/part15.png@97}}" x="769" y="613" width="110" height="341"/><image href="{{img:echo-rig/part16.png@112}}" x="751" y="614" width="127" height="397"/>
+        <g class="head">
+          <g class="curl"><image href="{{img:echo-rig/part12.png@150}}" x="632" y="435" width="171" height="191"/></g>
+          <image href="{{img:echo-rig/part03.png@267}}" x="475" y="214" width="303" height="354"/><image href="{{img:echo-rig/part10.png@83}}" x="642" y="347" width="94" height="46"/><image href="{{img:echo-rig/part11.png@76}}" x="521" y="353" width="86" height="50"/><g class="grin"><image href="{{img:echo-rig/part14.png@142}}" x="551" y="408" width="161" height="82"/></g>
+          <circle class="eye" cx="689" cy="370" r="62" fill="url(#eye)"/>
+          <circle class="eye" cx="564" cy="378" r="62" fill="url(#eye)"/>
+          <image href="{{img:echo-rig/part06.png@348}}" x="422" y="134" width="396" height="474"/><image href="{{img:echo-rig/part21.png@50}}" x="475" y="350" width="57" height="80"/>
+          <g class="bun-l"><image href="{{img:echo-rig/part00.png@77}}" x="539" y="97" width="87" height="90"/></g><g class="bun-r"><image href="{{img:echo-rig/part01.png@81}}" x="619" y="95" width="92" height="99"/></g>
+        </g>
+        <g class="hand">
+          <image href="{{img:echo-rig/part09.png@87}}" x="548" y="525" width="99" height="130"/><image href="{{img:echo-rig/part02.png@125}}" x="537" y="433" width="142" height="221"/><g class="tap"><image href="{{img:echo-rig/part04.png@41}}" x="538" y="433" width="47" height="102"/></g><image href="{{img:echo-rig/part05.png@86}}" x="581" y="458" width="98" height="81"/><image href="{{img:echo-rig/part07.png@40}}" x="612" y="479" width="46" height="28"/><image href="{{img:echo-rig/part08.png@40}}" x="616" y="534" width="46" height="60"/>
+        </g>
+      </g>
+    </g>
 
     <image href="{{img:echo-logo-crop.png@280}}" x="52" y="34" width="105" height="100"/>
     <text x="176" y="116" font-size="80" font-weight="600" fill="#f0f1f7">Echo Launcher</text>
