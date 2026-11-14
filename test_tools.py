@@ -22,6 +22,14 @@ def test_embed_replaces_img_token_with_resized_webp():
         assert im.size == (8, 4)
 
 
+def test_embed_keeps_a_ready_webp_byte_for_byte():
+    with tempfile.TemporaryDirectory() as d:
+        buf = io.BytesIO(); Image.new("RGBA", (8, 8), (0, 255, 0, 255)).save(buf, "WEBP", quality=40)
+        (Path(d) / "s.webp").write_bytes(buf.getvalue())
+        out = build.embed('<image href="{{img:s.webp}}"/>', img_dir=Path(d))
+        assert out.split('"')[1] == "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode()
+
+
 def test_embed_inlines_svg_markup_without_xml_declaration():
     with tempfile.TemporaryDirectory() as d:
         (Path(d) / "logo.svg").write_text('<?xml version="1.0"?>\n<svg viewBox="0 0 1 1"><g id="Up-arrow"/></svg>\n')

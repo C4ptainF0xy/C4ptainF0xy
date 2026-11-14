@@ -7,39 +7,22 @@
     .line { animation: pulse 4s ease-in-out infinite; }
     @keyframes shine { 0% { transform: translateX(0); } 25%, 100% { transform: translateX(780px); } }
     @keyframes pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
-    /* Skely's cut-out Yandere, rigged: pivots are joints on the 1280 reference drawing */
-    .breathe, .head, .curl, .grin, .bun-l, .bun-r, .hand, .tap { transform-box: view-box; }
-    .breathe { transform-origin: 640px 1045px; animation: breathe 4s ease-in-out infinite; }
-    @keyframes breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.006, 1.014); } }
-    .head { transform-origin: 626px 560px; animation: tilt 4s ease-in-out infinite; }
-    @keyframes tilt { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-2deg); } 70% { transform: rotate(1.4deg); } }
-    .curl { transform-origin: 717px 440px; animation: sway 4s ease-in-out infinite; }
-    .curl-l { transform-box: view-box; transform-origin: 492px 440px; animation: sway-l 4s ease-in-out infinite; }
-    @keyframes sway-l { 0%, 100% { transform: rotate(0); } 55% { transform: rotate(-4deg); } }
-    @keyframes sway { 0%, 100% { transform: rotate(0); } 45% { transform: rotate(5deg); } }
-    .bun-l { transform-origin: 582px 187px; animation: bun-l 2s ease-in-out infinite; }
-    .bun-r { transform-origin: 665px 192px; animation: bun-r 2s ease-in-out -.25s infinite; }
-    @keyframes bun-l { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-8deg); } }
-    @keyframes bun-r { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(8deg); } }
-    .grin { transform-origin: 632px 449px; animation: grin 4s ease-in-out infinite; }
-    @keyframes grin { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05, 1.03); } }
-    .hand { transform-origin: 600px 650px; animation: hand 2s ease-in-out infinite; }
-    @keyframes hand { 0%, 40%, 100% { transform: rotate(0); } 15% { transform: rotate(-2.5deg); } }
-    .tap { transform-origin: 561px 530px; animation: tap 2s ease-in-out infinite; }
-    @keyframes tap { 0%, 40%, 100% { transform: rotate(0); } 15% { transform: rotate(-6deg); } }
-    .eye { mix-blend-mode: screen; animation: stare 2s ease-in-out infinite; }
-    @keyframes stare { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+    /* Echo, animated in Spine from Skely's pieces: one 4 s loop, 80 frames */
+    .cols { animation: cols .5s steps(10) infinite; }
+    .rows { animation: rows 4s steps(8) infinite; }
+    @keyframes cols { to { transform: translateX(-2150.720px); } }
+    @keyframes rows { to { transform: translateY(-3412.992px); } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
   <defs>
     <clipPath id="card"><rect width="1280" height="400" rx="16"/></clipPath>
+    <clipPath id="frame"><rect x="1011.120" y="12.080" width="215.072" height="426.624"/></clipPath>
     <clipPath id="btn"><rect x="56" y="240" width="410" height="96" rx="14"/></clipPath>
     <linearGradient id="fade" x1="0" x2="1">
       <stop offset="0" stop-color="#000" stop-opacity=".95"/>
       <stop offset=".45" stop-color="#000" stop-opacity=".8"/>
       <stop offset=".72" stop-color="#000" stop-opacity="0"/>
     </linearGradient>
-    <radialGradient id="eye"><stop offset="0" stop-color="#ff3b4e" stop-opacity=".95"/><stop offset=".35" stop-color="#ff1f35" stop-opacity=".5"/><stop offset="1" stop-color="#ff1f35" stop-opacity="0"/></radialGradient>
     <linearGradient id="gleam" x1="0" x2="1">
       <stop offset="0" stop-color="#fff" stop-opacity="0"/>
       <stop offset=".5" stop-color="#fff" stop-opacity=".45"/>
@@ -51,22 +34,10 @@
     <image href="{{img:echo-crowd.png}}" x="80" y="6" width="1200" height="408"/>
     <rect width="1280" height="400" fill="url(#fade)"/>
 
-    <g transform="translate(837.3 -22.7) scale(0.44)">
-      <g class="breathe">
-        <image href="{{img:echo-rig/part19.png@84}}" x="397" y="566" width="95" height="339"/><image href="{{img:echo-rig/part20.png@101}}" x="751" y="883" width="115" height="128"/>
-        <!-- both curls hang behind the coat, yet follow the head: same tilt, drawn before the torso -->
-        <g class="head"><g class="curl-l"><image href="{{img:echo-rig/part22.png@119}}" x="424" y="438" width="135" height="168"/></g><g class="curl"><image href="{{img:echo-rig/part12.png@150}}" x="632" y="435" width="171" height="191"/></g></g>
-        <!-- pieces that never move against each other are merged blocks: no seam at their joints -->
-        <image href="{{img:echo-rig/part30.png@422}}" x="399" y="508" width="479" height="536"/>
-        <g class="head">
-          <image href="{{img:echo-rig/part32.png@264}}" x="477" y="216" width="300" height="350"/><g class="grin"><image href="{{img:echo-rig/part14.png@142}}" x="551" y="408" width="161" height="82"/></g>
-          <circle class="eye" cx="689" cy="370" r="62" fill="url(#eye)"/>
-          <circle class="eye" cx="564" cy="378" r="62" fill="url(#eye)"/>
-          <image href="{{img:echo-rig/part33.png@346}}" x="424" y="136" width="393" height="470"/>
-          <g class="bun-l"><image href="{{img:echo-rig/part00.png@77}}" x="539" y="97" width="87" height="90"/></g><g class="bun-r"><image href="{{img:echo-rig/part01.png@81}}" x="619" y="95" width="92" height="99"/></g>
-        </g>
-        <g class="hand"><image href="{{img:echo-rig/part31.png@122}}" x="539" y="435" width="139" height="218"/></g>
-      </g>
+    <g clip-path="url(#frame)">
+      <g class="rows"><g class="cols">
+        <image href="{{img:echo-spine.webp}}" x="1011.120" y="12.080" width="2150.720" height="3412.992"/>
+      </g></g>
     </g>
 
     <image href="{{img:echo-logo-crop.png@280}}" x="52" y="34" width="105" height="100"/>

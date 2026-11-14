@@ -32,6 +32,8 @@ def data_uri(kind: str, name: str, width: int | None, img_dir: Path, font_dir: P
     if kind != "img":
         path = (font_dir if kind == "font" else img_dir) / name
         return f"data:{MIME[kind]};base64,{_b64(path.read_bytes())}"
+    if name.endswith(".webp"):                      # already encoded at the quality it needs: keep it as is
+        return f"data:image/webp;base64,{_b64((img_dir / name).read_bytes())}"
     im = Image.open(img_dir / name)
     if width and im.width > width:
         im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
