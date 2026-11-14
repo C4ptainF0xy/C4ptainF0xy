@@ -58,6 +58,12 @@ def test_check_flags_text_too_small_on_a_278px_phone_column():
         assert not any("contact-x.svg" in v and "font-size 47 " in v for v in found), found
 
 
+def test_check_weighs_animated_webp_cards_too():
+    with tempfile.TemporaryDirectory() as d:
+        (Path(d) / "card.webp").write_bytes(b"\0" * (check.MAX_FILE + 1))
+        assert any("card.webp" in v and "bytes" in v for v in check.violations(Path(d)))
+
+
 def test_check_flags_oversize_file():
     with tempfile.TemporaryDirectory() as d:
         (Path(d) / "big.svg").write_text("<svg>" + "A" * check.MAX_FILE + "</svg>")

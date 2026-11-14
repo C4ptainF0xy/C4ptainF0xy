@@ -14,11 +14,13 @@ EXTERNAL = re.compile(r"""(?:\bhref|xlink:href)\s*=\s*["']https?:|url\(\s*["']?h
 
 def violations(assets: Path) -> list[str]:
     found, total = [], 0
-    for f in sorted(assets.glob("*.svg")):
-        text = f.read_text("utf-8")
+    for f in sorted([*assets.glob("*.svg"), *assets.glob("*.webp")]):
         total += f.stat().st_size
         if f.stat().st_size > MAX_FILE:
             found.append(f"{f.name}: {f.stat().st_size:,} bytes > {MAX_FILE:,}")
+        if f.suffix != ".svg":
+            continue
+        text = f.read_text("utf-8")
         if re.search(r"<script", text, re.I):
             found.append(f"{f.name}: contains <script>")
         if m := EXTERNAL.search(text):

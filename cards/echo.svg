@@ -4,19 +4,11 @@
     @font-face { font-family: "Noto Sans"; font-weight: 600; src: url({{font:noto-sans-600.woff2}}) format("woff2"); }
     text { font-family: "Noto Sans", sans-serif; }
     .shine { animation: shine 4s cubic-bezier(.4, 0, .2, 1) infinite; }
-    .line { animation: pulse 4s ease-in-out infinite; }
     @keyframes shine { 0% { transform: translateX(0); } 25%, 100% { transform: translateX(780px); } }
-    @keyframes pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
-    /* Echo, animated in Spine from Skely's pieces: one 4 s loop, 80 frames */
-    .cols { animation: cols .5s steps(10) infinite; }
-    .rows { animation: rows 4s steps(8) infinite; }
-    @keyframes cols { to { transform: translateX(-2150.720px); } }
-    @keyframes rows { to { transform: translateY(-3412.992px); } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
   </style>
   <defs>
     <clipPath id="card"><rect width="1280" height="400" rx="16"/></clipPath>
-    <clipPath id="frame"><rect x="1011.120" y="12.080" width="215.072" height="426.624"/></clipPath>
     <clipPath id="btn"><rect x="56" y="240" width="410" height="96" rx="14"/></clipPath>
     <linearGradient id="fade" x1="0" x2="1">
       <stop offset="0" stop-color="#000" stop-opacity=".95"/>
@@ -34,11 +26,7 @@
     <image href="{{img:echo-crowd.png}}" x="80" y="6" width="1200" height="408"/>
     <rect width="1280" height="400" fill="url(#fade)"/>
 
-    <g clip-path="url(#frame)">
-      <g class="rows"><g class="cols">
-        <image href="{{img:echo-spine.webp}}" x="1011.120" y="12.080" width="2150.720" height="3412.992"/>
-      </g></g>
-    </g>
+    <!-- the mascot is composed in by echo_card.py, frame by frame, from Spine's export -->
 
     <image href="{{img:echo-logo-crop.png@280}}" x="52" y="34" width="105" height="100"/>
     <text x="176" y="116" font-size="80" font-weight="600" fill="#f0f1f7">Echo Launcher</text>
@@ -51,6 +39,6 @@
       <g class="shine"><rect x="-140" y="230" width="90" height="120" fill="url(#gleam)" transform="skewX(-20)"/></g>
     </g>
 
-    <rect class="line" y="394" width="1280" height="6" fill="#ea1b2d"/>
+    <rect y="394" width="1280" height="6" fill="#ea1b2d"/>
   </g>
 </svg>
