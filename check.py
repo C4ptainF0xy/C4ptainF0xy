@@ -51,5 +51,6 @@ def readme_violations(readme: str, assets: Path) -> list[str]:
 if __name__ == "__main__":
     assets = ROOT / "assets"
     found = violations(assets) + readme_violations((ROOT / "README.md").read_text("utf-8"), assets)
-    print("\n".join(found) or f"OK {len(list(assets.glob('*.svg')))} files, total {sum(f.stat().st_size for f in assets.glob('*.svg')):,} bytes")
+    shipped = [*assets.glob("*.svg"), *assets.glob("*.webp")]
+    print("\n".join(found) or f"OK {len(shipped)} files, total {sum(f.stat().st_size for f in shipped):,} bytes")
     sys.exit(1 if found else 0)
