@@ -6,7 +6,6 @@
 more than 1 % of pixels changed means the animation visibly jumps when it loops.
 """
 import argparse
-import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -19,6 +18,23 @@ def differs(a: Image.Image, b: Image.Image) -> float:
     """Share of pixels whose colour changed by more than 24 on any channel."""
     diff = ImageChops.difference(a.convert("RGB"), b.convert("RGB")).convert("L").point(lambda v: 255 if v > 24 else 0)
     return diff.histogram()[255] / (a.width * a.height)
+
+
+def write_gif(frames: list[Path], out: Path, fps: int = 20) -> None:
+    """One looping GIF from frame files, with one palette shared by the whole loop.
+
+    Pillow folds a frame identical to the previous one into it and adds up their durations, so the loop
+    keeps its exact length. ffmpeg's GIF encoder drops those frames without lengthening the kept one,
+    which shortened the loop and made it jump.
+    """
+    images = [Image.open(f).convert("RGB") for f in frames]
+    tile = images[0].width // 4 or 1
+    mosaic = Image.new("RGB", (tile * len(images), max(1, images[0].height // 4)))
+    for i, im in enumerate(images):
+        mosaic.paste(im.resize((tile, mosaic.height)), (i * tile, 0))
+    palette = mosaic.quantize(colors=256, method=Image.Quantize.MEDIANCUT)
+    gif = [im.quantize(palette=palette, dither=Image.Dither.FLOYDSTEINBERG) for im in images]
+    gif[0].save(out, save_all=True, append_images=gif[1:], duration=1000 // fps, loop=0, disposal=1, optimize=False)
 
 
 def render(svg: Path, times: list[float], width: int, out: str, bg: str) -> list[Path]:
@@ -54,12 +70,7 @@ if __name__ == "__main__":
     a = ap.parse_args()
     if a.gif:
         with tempfile.TemporaryDirectory() as d:
-            frames = render(a.svg, [i / 20 for i in range(round(a.gif * 20))], a.width, f"{d}/f", a.bg)
-            for i, f in enumerate(frames):
-                f.rename(f"{d}/{i:04d}.png")
-            subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", "20", "-i", f"{d}/%04d.png", "-vf",
-                            "split[a][b];[a]palettegen=stats_mode=full[p];[b][p]paletteuse=dither=sierra2_4a",
-                            "-loop", "0", f"{a.out}.gif"], check=True)
+            write_gif(render(a.svg, [i / 20 for i in range(round(a.gif * 20))], a.width, f"{d}/f", a.bg), Path(f"{a.out}.gif"))
         print(f"{a.out}.gif")
         sys.exit(0)
     times = [float(x) for x in a.t.split(",")]

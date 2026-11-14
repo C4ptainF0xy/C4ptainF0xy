@@ -72,6 +72,22 @@ def test_readme_check_flags_missing_asset_http_link_and_style():
         assert len(found) == 4, found
 
 
+def test_gif_keeps_the_full_loop_duration_even_with_repeated_frames():
+    with tempfile.TemporaryDirectory() as d:
+        frames = []
+        for i, colour in enumerate(["red", "red", "red", "blue", "blue", "green"]):   # repeats must not shorten the loop
+            p = Path(d) / f"{i:04d}.png"; Image.new("RGB", (16, 16), colour).save(p); frames.append(p)
+        out = Path(d) / "out.gif"
+        preview.write_gif(frames, out, fps=20)
+        with Image.open(out) as g:
+            total = 0
+            for i in range(g.n_frames):
+                g.seek(i); total += g.info["duration"]
+            loop = g.info.get("loop")
+        assert total == 300, total            # 6 frames at 20 fps
+        assert loop == 0
+
+
 def test_differs_measures_changed_pixel_ratio():
     a = Image.new("RGB", (10, 10), "black")
     b = a.copy()

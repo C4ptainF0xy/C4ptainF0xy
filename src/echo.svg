@@ -56,17 +56,16 @@
         <image href="{{img:echo-rig/part19.png@84}}" x="397" y="566" width="95" height="339"/><image href="{{img:echo-rig/part20.png@101}}" x="751" y="883" width="115" height="128"/>
         <!-- both curls hang behind the coat, yet follow the head: same tilt, drawn before the torso -->
         <g class="head"><g class="curl-l"><image href="{{img:echo-rig/part22.png@119}}" x="424" y="438" width="135" height="168"/></g><g class="curl"><image href="{{img:echo-rig/part12.png@150}}" x="632" y="435" width="171" height="191"/></g></g>
-        <image href="{{img:echo-rig/part13.png@378}}" x="423" y="506" width="429" height="539"/><image href="{{img:echo-rig/part17.png@208}}" x="397" y="566" width="236" height="377"/><image href="{{img:echo-rig/part18.png@195}}" x="411" y="610" width="222" height="334"/><image href="{{img:echo-rig/part15.png@97}}" x="769" y="613" width="110" height="341"/><image href="{{img:echo-rig/part16.png@112}}" x="751" y="614" width="127" height="397"/>
+        <!-- pieces that never move against each other are merged blocks: no seam at their joints -->
+        <image href="{{img:echo-rig/part30.png@422}}" x="399" y="508" width="479" height="536"/>
         <g class="head">
-          <image href="{{img:echo-rig/part03.png@267}}" x="475" y="214" width="303" height="354"/><image href="{{img:echo-rig/part10.png@83}}" x="642" y="347" width="94" height="46"/><image href="{{img:echo-rig/part11.png@76}}" x="521" y="353" width="86" height="50"/><g class="grin"><image href="{{img:echo-rig/part14.png@142}}" x="551" y="408" width="161" height="82"/></g>
+          <image href="{{img:echo-rig/part32.png@264}}" x="477" y="216" width="300" height="350"/><g class="grin"><image href="{{img:echo-rig/part14.png@142}}" x="551" y="408" width="161" height="82"/></g>
           <circle class="eye" cx="689" cy="370" r="62" fill="url(#eye)"/>
           <circle class="eye" cx="564" cy="378" r="62" fill="url(#eye)"/>
-          <image href="{{img:echo-rig/part06.png@348}}" x="422" y="134" width="396" height="474"/><image href="{{img:echo-rig/part21.png@50}}" x="475" y="350" width="57" height="80"/>
+          <image href="{{img:echo-rig/part33.png@346}}" x="424" y="136" width="393" height="470"/>
           <g class="bun-l"><image href="{{img:echo-rig/part00.png@77}}" x="539" y="97" width="87" height="90"/></g><g class="bun-r"><image href="{{img:echo-rig/part01.png@81}}" x="619" y="95" width="92" height="99"/></g>
         </g>
-        <g class="hand">
-          <image href="{{img:echo-rig/part09.png@87}}" x="548" y="525" width="99" height="130"/><image href="{{img:echo-rig/part02.png@125}}" x="537" y="433" width="142" height="221"/><g class="tap"><image href="{{img:echo-rig/part04.png@41}}" x="538" y="433" width="47" height="102"/></g><image href="{{img:echo-rig/part05.png@86}}" x="581" y="458" width="98" height="81"/><image href="{{img:echo-rig/part07.png@40}}" x="612" y="479" width="46" height="28"/><image href="{{img:echo-rig/part08.png@40}}" x="616" y="534" width="46" height="60"/>
-        </g>
+        <g class="hand"><image href="{{img:echo-rig/part31.png@122}}" x="539" y="435" width="139" height="218"/></g>
       </g>
     </g>
 
