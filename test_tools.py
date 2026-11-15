@@ -119,6 +119,17 @@ def test_echo_gif_keeps_transparent_corners_and_loop_length():
     assert last.getpixel((0, 0))[3] == 0 and last.getpixel((4, 4)) == (0, 0, 255, 255), last.getpixel((4, 4))
 
 
+def test_echo_gif_keeps_small_distinct_colours():
+    # echo-cover.png has the Yandere's yellow buttons: a plain 255-colour median cut turned them pink (worst error 65)
+    im = Image.open(Path(__file__).parent / "src" / "img" / "echo-cover.png").convert("RGBA")
+    with tempfile.TemporaryDirectory() as d:
+        out = Path(d) / "c.gif"
+        echo_card.save_gif([im], out)
+        got = Image.open(out).convert("RGBA")
+    worst = max(max(abs(a - b) for a, b in zip(p, q)) for p, q in zip(got.getdata(), im.getdata()))
+    assert worst <= 32, worst
+
+
 def test_differs_measures_changed_pixel_ratio():
     a = Image.new("RGB", (10, 10), "black")
     b = a.copy()

@@ -71,7 +71,8 @@ def save_gif(frames: list[Image.Image], out: Path, dither_box: tuple[int, int, i
     No dithering: on this flat art over dark gradients it looked noisier and weighed twice as much
     (7.8 MB against 4.0 MB, and 42.5 dB against 43.0 dB, the WebP being 38.4). Except in `dither_box`:
     the button's gleam is a gradient that banded into five steps; it moves anyway, so no noise shows.
-    Index 255 is the transparent rounded corners.
+    Index 255 is transparent: the rounded corners, and (Pillow's optimize) every pixel that did not change since
+    the previous frame, which took the Twitch banner from 9.8 MB to 6.2 MB with the exact same frames.
     """
     rgb = [f.convert("RGB") for f in frames]
     parts = [rgb[0]] + [im.crop(b) for prev, im in zip(rgb, rgb[1:]) if (b := ImageChops.difference(im, prev).getbbox())]
@@ -79,7 +80,17 @@ def save_gif(frames: list[Image.Image], out: Path, dither_box: tuple[int, int, i
     y = 0
     for p in parts:
         sample.paste(p, (0, y)); y += p.height
-    palette = sample.quantize(colors=255, method=Image.Quantize.MEDIANCUT, kmeans=4)
+    first = sample.quantize(colors=231, method=Image.Quantize.MEDIANCUT, kmeans=4)
+    colours = first.getpalette()[:3 * 231]
+    # median cut sacrifices small, distinct colours (the Yandere's yellow buttons came out pink): 24 entries for them
+    s = np.asarray(sample).astype(int)
+    err = np.abs(np.asarray(sample.quantize(palette=first, dither=Image.Dither.NONE).convert("RGB")).astype(int) - s).max(axis=2)
+    if (far := s[err > 24].astype(np.uint8)).size:
+        more = Image.fromarray(far[None]).quantize(colors=24, method=Image.Quantize.MEDIANCUT, kmeans=2)
+        colours += more.getpalette()[:3 * min(24, len(np.unique(far, axis=0)))]
+    colours += colours[:3] * (256 - len(colours) // 3)        # copies of colour 0: no pixel picks 255 by itself
+    palette = Image.new("P", (1, 1))
+    palette.putpalette(colours)
     clear = np.asarray(frames[0].getchannel("A")) < 128
     gif = []
     for im in rgb:
@@ -89,10 +100,10 @@ def save_gif(frames: list[Image.Image], out: Path, dither_box: tuple[int, int, i
             q[y0:y1, x0:x1] = np.asarray(im.crop(dither_box).quantize(palette=palette, dither=Image.Dither.FLOYDSTEINBERG))
         q[clear] = 255
         f = Image.fromarray(q)
-        f.putpalette(palette.getpalette()[:765] + [0, 0, 0])
+        f.putpalette(palette.getpalette())
         gif.append(f)
     gif[0].save(out, save_all=True, append_images=gif[1:], duration=1000 // FPS, loop=0, disposal=1,
-                transparency=255, optimize=False)
+                transparency=255, optimize=True)
 
 
 def main():
