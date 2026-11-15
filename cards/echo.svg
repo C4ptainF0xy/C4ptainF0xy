@@ -28,7 +28,7 @@
 
     <!-- the mascot is composed in by echo_card.py, frame by frame, from Spine's export -->
 
-    <image href="{{img:echo-logo-badge.png@320}}" x="46" y="22" width="106" height="118"/>
+    <image href="{{img:echo-logo-badge.png@320}}" x="43.8" y="22" width="108.2" height="118"/>
     <text x="176" y="116" font-size="80" font-weight="600" fill="#f0f1f7">Echo Launcher</text>
     <text x="58" y="198" font-size="47" fill="#c9cad1">Your library. Your cloud. Your rules.</text>
 
