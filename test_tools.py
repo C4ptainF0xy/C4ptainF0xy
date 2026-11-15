@@ -8,6 +8,7 @@ from PIL import Image
 
 import build
 import check
+import echo_card
 import preview
 
 
@@ -100,6 +101,22 @@ def test_gif_keeps_the_full_loop_duration_even_with_repeated_frames():
             loop = g.info.get("loop")
         assert total == 300, total            # 6 frames at 20 fps
         assert loop == 0
+
+
+def test_echo_gif_keeps_transparent_corners_and_loop_length():
+    frames = []
+    for colour in ["red", "red", "blue"]:                 # the repeat must not shorten the loop
+        im = Image.new("RGBA", (8, 8), colour); im.putpixel((0, 0), (0, 0, 0, 0)); frames.append(im)
+    with tempfile.TemporaryDirectory() as d:
+        out = Path(d) / "e.gif"
+        echo_card.save_gif(frames, out)
+        with Image.open(out) as g:
+            total = 0
+            for i in range(g.n_frames):
+                g.seek(i); total += g.info["duration"]
+            last = g.convert("RGBA")
+    assert total == 150, total
+    assert last.getpixel((0, 0))[3] == 0 and last.getpixel((4, 4)) == (0, 0, 255, 255), last.getpixel((4, 4))
 
 
 def test_differs_measures_changed_pixel_ratio():

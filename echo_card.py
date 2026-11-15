@@ -4,14 +4,15 @@ A sprite sheet stepped by CSS lands on a different sub-pixel every frame, so eve
 frame is composed once at a fixed position: the card (rendered from cards/echo.svg, which has no mascot), then the
 Spine frame, then the card's bottom line again, which sits over the mascot in the SVG too.
 
-  py echo_card.py D:/Projects/echo-spine/work/frames [--quality 85]
+  py echo_card.py D:/Projects/echo-spine/work/frames [--quality 85] [--gif gif/echo.gif]
 """
 import argparse
 import json
 import tempfile
 from pathlib import Path
 
-from PIL import Image
+import numpy as np
+from PIL import Image, ImageChops
 from playwright.sync_api import sync_playwright
 
 import build
@@ -42,17 +43,14 @@ def card_frames(out: Path) -> list[Path]:
     return paths
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("spine_frames", type=Path)
-    ap.add_argument("--quality", type=int, default=85)
-    a = ap.parse_args()
+def compose(spine_frames: Path) -> list[Image.Image]:
+    """The 80 frames of the loop, uncompressed."""
     meta = json.loads((ROOT / "src" / "img" / "echo-spine.json").read_text())
     S = 0.44
     TX, TY = 1012 - 397 * S, 20 - 97 * S
     x, y = (TX + S * meta["ref_x"]) * SCALE, (TY + S * meta["ref_y"]) * SCALE
     w, h = S * meta["ref_w"] * SCALE, S * meta["ref_h"] * SCALE
-    spine = [Image.open(a.spine_frames / f"f_{FIRST + i:03d}.png").convert("RGBA") for i in range(FPS * LOOP)]
+    spine = [Image.open(spine_frames / f"f_{FIRST + i:03d}.png").convert("RGBA") for i in range(FPS * LOOP)]
     union = tuple(meta["crop"])
     line_top = round(394 * SCALE)
     frames = []
@@ -64,10 +62,53 @@ def main():
             card.alpha_composite(mascot, (round(x), round(y)))
             card.paste(line, (0, line_top))              # the bottom line stays in front, as in the SVG
             frames.append(card)
+    return frames
+
+
+def save_gif(frames: list[Image.Image], out: Path, dither_box: tuple[int, int, int, int] | None = None) -> None:
+    """The loop as a GIF: one palette for the whole loop, fit to frame 0 and to every region that moves.
+
+    No dithering: on this flat art over dark gradients it looked noisier and weighed twice as much
+    (7.8 MB against 4.0 MB, and 42.5 dB against 43.0 dB, the WebP being 38.4). Except in `dither_box`:
+    the button's gleam is a gradient that banded into five steps; it moves anyway, so no noise shows.
+    Index 255 is the transparent rounded corners.
+    """
+    rgb = [f.convert("RGB") for f in frames]
+    parts = [rgb[0]] + [im.crop(b) for prev, im in zip(rgb, rgb[1:]) if (b := ImageChops.difference(im, prev).getbbox())]
+    sample = Image.new("RGB", (rgb[0].width, sum(p.height for p in parts)))
+    y = 0
+    for p in parts:
+        sample.paste(p, (0, y)); y += p.height
+    palette = sample.quantize(colors=255, method=Image.Quantize.MEDIANCUT, kmeans=4)
+    clear = np.asarray(frames[0].getchannel("A")) < 128
+    gif = []
+    for im in rgb:
+        q = np.asarray(im.quantize(palette=palette, dither=Image.Dither.NONE)).copy()
+        if dither_box:
+            x0, y0, x1, y1 = dither_box
+            q[y0:y1, x0:x1] = np.asarray(im.crop(dither_box).quantize(palette=palette, dither=Image.Dither.FLOYDSTEINBERG))
+        q[clear] = 255
+        f = Image.fromarray(q)
+        f.putpalette(palette.getpalette()[:765] + [0, 0, 0])
+        gif.append(f)
+    gif[0].save(out, save_all=True, append_images=gif[1:], duration=1000 // FPS, loop=0, disposal=1,
+                transparency=255, optimize=False)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("spine_frames", type=Path)
+    ap.add_argument("--quality", type=int, default=85)
+    ap.add_argument("--gif", type=Path, help="also write the loop as a GIF here")
+    a = ap.parse_args()
+    frames = compose(a.spine_frames)
     out = ROOT / "assets" / "echo.webp"
     frames[0].save(out, save_all=True, append_images=frames[1:], duration=1000 // FPS, loop=0,
                    quality=a.quality, method=6, minimize_size=True)
     print(f"{out.name}: {len(frames)} frames {frames[0].size}, {out.stat().st_size:,} bytes")
+    if a.gif:
+        save_gif(frames, a.gif, dither_box=tuple(round(v * SCALE) for v in (56, 240, 466, 336)))   # the button
+        print(f"{a.gif}: {a.gif.stat().st_size:,} bytes")
 
 
 if __name__ == "__main__":
